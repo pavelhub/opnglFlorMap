@@ -2,11 +2,18 @@
 <items version="2" >
 
     <item
-        jar="C:\WORK\PROJECTS\mall_app\test\HelloOpenGLES20\openglmap\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.0\jars\classes.jar"
+        jar="C:\WORK\PROJECTS\mall_app\modules\openglFloorMap\openglmap\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.0\jars\classes.jar"
         jumboMode="false"
         revision="23.0.1"
         sha1="57ae0d750ff83f0c738d21720224ac7ea866a094">
-        <dex dex="C:\WORK\PROJECTS\mall_app\test\HelloOpenGLES20\openglmap\build\intermediates\pre-dexed\debug\classes-c05a9fd3f9d7bff8bedd2794cadc5a102c498ca2.jar" />
+        <dex dex="C:\WORK\PROJECTS\mall_app\modules\openglFloorMap\openglmap\build\intermediates\pre-dexed\debug\classes-de006cc482848c6c594840a5b9d9d38f509614b7.jar" />
+    </item>
+    <item
+        jar="C:\WORK\PROJECTS\mall_app\test\HelloOpenGLES20\openglmap\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\libs\internal_impl-23.1.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="8716243bf04bae8d6c9ca94d27b9a9be7236f0a3">
+        <dex dex="C:\WORK\PROJECTS\mall_app\test\HelloOpenGLES20\openglmap\build\intermediates\pre-dexed\debug\internal_impl-23.1.0-9765b63245eefd86299b85d7d654dd2722b038ed.jar" />
     </item>
     <item
         jar="C:\WORK\PROJECTS\mall_app\test\HelloOpenGLES20\openglmap\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\classes.jar"
@@ -16,6 +23,13 @@
         <dex dex="C:\WORK\PROJECTS\mall_app\test\HelloOpenGLES20\openglmap\build\intermediates\pre-dexed\debug\classes-838d190a0c7127115e1e71c9f4e83bd59d716125.jar" />
     </item>
     <item
+        jar="C:\WORK\PROJECTS\mall_app\modules\openglFloorMap\openglmap\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="ddde541c289c8b816a8f8fd6c325d80788c522a6">
+        <dex dex="C:\WORK\PROJECTS\mall_app\modules\openglFloorMap\openglmap\build\intermediates\pre-dexed\debug\classes-7ea3b0914f8ea750de93055be1abc3908a7a308d.jar" />
+    </item>
+    <item
         jar="C:\Users\Pavel\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.1.0\support-annotations-23.1.0.jar"
         jumboMode="false"
         revision="23.0.1"
@@ -23,11 +37,18 @@
         <dex dex="C:\WORK\PROJECTS\mall_app\test\HelloOpenGLES20\openglmap\build\intermediates\pre-dexed\debug\support-annotations-23.1.0-0a9d940d6991ebe7f83625d00205fa72a932b3c3.jar" />
     </item>
     <item
-        jar="C:\WORK\PROJECTS\mall_app\test\HelloOpenGLES20\openglmap\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\libs\internal_impl-23.1.0.jar"
+        jar="C:\WORK\PROJECTS\mall_app\modules\openglFloorMap\openglmap\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\libs\internal_impl-23.1.0.jar"
         jumboMode="false"
         revision="23.0.1"
         sha1="8716243bf04bae8d6c9ca94d27b9a9be7236f0a3">
-        <dex dex="C:\WORK\PROJECTS\mall_app\test\HelloOpenGLES20\openglmap\build\intermediates\pre-dexed\debug\internal_impl-23.1.0-9765b63245eefd86299b85d7d654dd2722b038ed.jar" />
+        <dex dex="C:\WORK\PROJECTS\mall_app\modules\openglFloorMap\openglmap\build\intermediates\pre-dexed\debug\internal_impl-23.1.0-77007e142c4c7ffe2aef53dcccf88b4aaa7d9bc3.jar" />
+    </item>
+    <item
+        jar="C:\WORK\PROJECTS\mall_app\test\HelloOpenGLES20\openglmap\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="57ae0d750ff83f0c738d21720224ac7ea866a094">
+        <dex dex="C:\WORK\PROJECTS\mall_app\test\HelloOpenGLES20\openglmap\build\intermediates\pre-dexed\debug\classes-c05a9fd3f9d7bff8bedd2794cadc5a102c498ca2.jar" />
     </item>
 
 </items>

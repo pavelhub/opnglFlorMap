@@ -1,5 +1,7 @@
 package com.example.pavel.openglmap.gl.servermodel;
 
+import android.util.FloatMath;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,21 +29,28 @@ public class Wall {
         getK();
         getB();
         kParale = k;
-        bPerp1 = getBPerp(poit1);
-        bPerp2 = getBPerp(poit2);
 
         if (Math.abs(k) == 0.0)
             kPerp = k = 0.0f;
         else
             kPerp = -1 / k;
+        bPerp1 = getBPerp(poit1);
+        bPerp2 = getBPerp(poit2);
 
 //        if(b>0) {
-        float bX = (float) (weight / (2.f * Math.sqrt(poit1.x * poit1.x + poit1.y * poit1.y)) - k * poit1.x + poit1.y);
+        float halfWeight = weight / 2.f;
+
+        bParalel1 = (float) (halfWeight * Math.sqrt(k * k + 1) + b);
+        bParalel2 = (float) (-halfWeight *Math.sqrt(k * k + 1) + b);
         if (k == 0) {
-            bX = weight / 2.f;
+//            bX = halfWeight;
+            bParalel1 = b - halfWeight;//weight / () k* point1.x+poit1.y+bb - ;
+            bParalel2 = b + halfWeight;// weight / 2.f;
         }
-        bParalel1 = b + bX;//weight / () k* point1.x+poit1.y+bb - ;
-        bParalel2 = b - bX;// weight / 2.f;
+//        bParalel1 = b - bX;//weight / () k* point1.x+poit1.y+bb - ;
+//        bParalel2 = b + bX;// weight / 2.f;
+
+
 //        }else {
 //            bParalel1 = b + weight / 2.f;
 //            bParalel2 = b - weight / 2.f;
@@ -49,7 +58,13 @@ public class Wall {
 
 
     }
-
+    public static float sqrt(float f) {
+        final float xhalf = f * 0.5F;
+        float y = Float.intBitsToFloat(0x5f375a86 - (Float.floatToIntBits(f) >> 1)); // evil floating point bit level hacking -- Use 0x5f375a86 instead of 0x5f3759df, due to slight accuracy increase. (Credit to Chris Lomont)
+        y = y * (1.5F - (xhalf * y * y)); 	// Newton step, repeating increases accuracy
+        y = y * (1.5F - (xhalf * y * y));
+        return f * y;
+    }
     private Point getPointParalePerp(Point point, float kParale, float bParalel, float kPerp, float bPerp) {
         Point pointPerp = new Point();
         if (point1.x == point2.x) {
@@ -84,7 +99,6 @@ public class Wall {
         if (deltaX == 0) {
             k = 0;
         } else {
-
             k = deltaY
                     /
                     (deltaX * 1.0f);

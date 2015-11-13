@@ -29,6 +29,14 @@ public class GLRendererMap implements GLSurfaceView.Renderer {
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {
         GLES20.glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+//        / Use culling to remove back faces.
+//        GLES20.glEnable(GLES20.GL_CULL_FACE);
+
+// Enable depth testing
+//        GLES20.glEnable(GLES20.GL_DEPTH_TEST);
+        GLES20.glEnable(GLES20.GL_DEPTH_TEST);
+// Accept fragment if it closer to the camera than the former one
+        GLES20.glDepthFunc(GLES20.GL_LESS);
         Venue venue = new Venue();
         venue.widht = 100;
         venue.height = 100;
@@ -36,32 +44,32 @@ public class GLRendererMap implements GLSurfaceView.Renderer {
         myShapes = new HashMap<>();
 //        List<Wall> walls = new ArrayList<>();
         Point point1 = new Point();
-        point1.x = -0.5f;
-        point1.y = -0.5f;
+        point1.x = -1f;
+        point1.y = -1f;
 
         Point point2 = new Point();
-        point2.x = 0.5f;
-        point2.y = 0.5f;
+        point2.x = -1f;
+        point2.y = 1f;
 
         Point point3 = new Point();
-        point3.x = -0.6f;
-        point3.y = 0.5f;
+        point3.x = 0f;
+        point3.y = 1f;
 
         Point point4 = new Point();
-        point4.x = 0.6f;
-        point4.y = -0.5f;
+        point4.x = 0.0f;
+        point4.y = 0f;
 
         Point point5 = new Point();
-        point5.x = 1f;
-        point5.y = 0.5f;
+        point5.x = 0f;
+        point5.y = -1f;
 
         Point point6 = new Point();
-        point6.x = -0.6f;
-        point6.y = 1.0f;
+        point6.x = 0.7f;
+        point6.y = 1f;
 
         Point point7 = new Point();
-        point7.x = -1.f;
-        point7.y = -0.5f;
+        point7.x = 0.3f;
+        point7.y = 0f;
 
         Point point8 = new Point();
         point8.x = 1.f;
@@ -71,28 +79,28 @@ public class GLRendererMap implements GLSurfaceView.Renderer {
         object.color = new float[]{1.0f, 0.0f, 0.0f, 1.0f};
         venue.getWallList().add(object);
 
-        Wall object2 = new Wall(point2, point4, 0.1f);//green
+        Wall object2 = new Wall(point1, point5, 0.1f);//green
         object2.color = new float[]{0.0f, 1.0f, 0.0f, 1.0f};
         venue.getWallList().add(object2);
 
-        Wall object3 = new Wall(point1, point3, 0.1f);//blue
+        Wall object3 = new Wall(point2, point3, 0.1f);//blue
         object3.color = new float[]{0.0f, 0.0f, 1.0f, 1.0f};
         venue.getWallList().add(object3);
-
-
-        Wall object4 = new Wall(point2, point5, 0.1f);
+////
+////
+        Wall object4 = new Wall(point5, point4, 0.1f);
         object4.color = new float[]{1.0f, 1.0f, 0.0f, 1.0f};
         venue.getWallList().add(object4);
-
+////
         Wall object5 = new Wall(point3, point6, 0.1f);
         object5.color = new float[]{1.0f, 0.0f, 1.0f, 1.0f};
         venue.getWallList().add(object5);
 
-        Wall object6 = new Wall(point1, point7, 0.1f);
+        Wall object6 = new Wall(point4, point7, 0.1f);
         object6.color = new float[]{1.0f, .50f, 1.0f, 1.0f};
         venue.getWallList().add(object6);
 
-        Wall object7 = new Wall(point4, point8, 0.1f);
+        Wall object7 = new Wall(point6, point7, 0.1f);
         object7.color = new float[]{1.0f, .50f, .50f, 1.0f};
         venue.getWallList().add(object7);
         venueModelOpenGLES2DrawingClass = new VenueModelOpenGLES2DrawingClass(venue);
@@ -210,34 +218,43 @@ public class GLRendererMap implements GLSurfaceView.Renderer {
         Matrix.frustumM(mProjectionMatrix, 0, -ratio, ratio, -1, 1, 3, 7);
 
     }
-
+    private float mAngle;
     @Override
     public void onDrawFrame(GL10 gl) {
         float[] scratch = new float[16];
 
         GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT | GLES20.GL_DEPTH_BUFFER_BIT);
 
-        Matrix.setLookAtM(mViewMatrix, 0, 0, 0, 6, 0f, 0f, 0f, 0f, 1.0f, 0.0f);
+        Matrix.setLookAtM(mViewMatrix, 0, 0, -2, 4, 0f, 0f, 0f, 0f, 1.0f, 0.0f);
 
         // Calculate the projection and view transformation
         Matrix.multiplyMM(mMVPMatrix, 0, mProjectionMatrix, 0, mViewMatrix, 0);
-        for (String shape : myShapes.keySet()) {
-            if (shape.equals(touchedObject)) {
-                Matrix.setRotateM(mRotationMatrix, 0, 5, 0, 0, -1.0f);
-//                Matrix.scaleM(mRotationMatrix, 1, 0, 0, -1.0f);
-                Matrix.multiplyMM(scratch, 0, mMVPMatrix, 0, mRotationMatrix, 0);
-                myShapes.get(shape).draw(scratch);
-            } else if (shape.equals("CUBE")) {
-                Matrix.setRotateEulerM(mRotationMatrix, 0, 2, 2, 3);
-//                Matrix.scaleM(mRotationMatrix, 1, 0, 0, -1.0f);
-                Matrix.multiplyMM(scratch, 0, mMVPMatrix, 0, mRotationMatrix, 0);
-                myShapes.get(shape).draw(scratch);
-            } else {
-                myShapes.get(shape).draw(mMVPMatrix);
-            }
-        }
 
-        venueModelOpenGLES2DrawingClass.draw(mMVPMatrix);
+//        for (String shape : myShapes.keySet()) {
+//            if (shape.equals(touchedObject)) {
+//                Matrix.setRotateM(mRotationMatrix, 0, 5, 0, 0, -1.0f);
+////                Matrix.scaleM(mRotationMatrix, 1, 0, 0, -1.0f);
+//                Matrix.multiplyMM(scratch, 0, mMVPMatrix, 0, mRotationMatrix, 0);
+//                myShapes.get(shape).draw(scratch);
+//            } else if (shape.equals("CUBE")) {
+//                Matrix.setRotateEulerM(mRotationMatrix, 0, 2, 2, 3);
+////                Matrix.scaleM(mRotationMatrix, 1, 0, 0, -1.0f);
+//                Matrix.multiplyMM(scratch, 0, mMVPMatrix, 0, mRotationMatrix, 0);
+//                myShapes.get(shape).draw(scratch);
+//            } else {
+//                myShapes.get(shape).draw(mMVPMatrix);
+//            }
+//        }
+
+        Matrix.setRotateM(mRotationMatrix, 0, mAngle, 0f, 0f, 1.0f);
+
+        // Combine the rotation matrix with the projection and camera view
+        // Note that the mMVPMatrix factor *must be first* in order
+        // for the matrix multiplication product to be correct.
+        Matrix.multiplyMM(scratch, 0, mMVPMatrix, 0, mRotationMatrix, 0);
+
+
+        venueModelOpenGLES2DrawingClass.draw(scratch);
 
 //
 //        // Draw shape
@@ -271,6 +288,14 @@ public class GLRendererMap implements GLSurfaceView.Renderer {
 
         }
         return touched;
+    }
+
+    public float getmAngle() {
+        return mAngle;
+    }
+
+    public void setmAngle(float mAngle) {
+        this.mAngle = mAngle;
     }
 
     public static int loadShader(int type, String shaderCode) {

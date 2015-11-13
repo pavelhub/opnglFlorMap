@@ -25,4 +25,4 @@
             android:layout_height="wrap_content"
             android:text="@string/hello" />
 
-</LinearLayout><!-- From: file:/C:/WORK/PROJECTS/mall_app/test/HelloOpenGLES20/app/src/main/res/layout/main.xml -->
+</LinearLayout><!-- From: file:/C:/WORK/PROJECTS/mall_app/modules/openglFloorMap/app/src/main/res/layout/main.xml -->

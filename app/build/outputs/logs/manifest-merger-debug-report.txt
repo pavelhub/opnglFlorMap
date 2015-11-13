@@ -1,53 +1,53 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\WORK\PROJECTS\mall_app\test\HelloOpenGLES20\app\src\main\AndroidManifest.xml:17:1-42:12
+ADDED from C:\WORK\PROJECTS\mall_app\modules\openglFloorMap\app\src\main\AndroidManifest.xml:17:1-42:12
 	package
-		ADDED from C:\WORK\PROJECTS\mall_app\test\HelloOpenGLES20\app\src\main\AndroidManifest.xml:19:5-41
-		INJECTED from C:\WORK\PROJECTS\mall_app\test\HelloOpenGLES20\app\src\main\AndroidManifest.xml
-		INJECTED from C:\WORK\PROJECTS\mall_app\test\HelloOpenGLES20\app\src\main\AndroidManifest.xml
+		ADDED from C:\WORK\PROJECTS\mall_app\modules\openglFloorMap\app\src\main\AndroidManifest.xml:19:5-41
+		INJECTED from C:\WORK\PROJECTS\mall_app\modules\openglFloorMap\app\src\main\AndroidManifest.xml
+		INJECTED from C:\WORK\PROJECTS\mall_app\modules\openglFloorMap\app\src\main\AndroidManifest.xml
 	android:versionName
-		ADDED from C:\WORK\PROJECTS\mall_app\test\HelloOpenGLES20\app\src\main\AndroidManifest.xml:21:5-30
+		ADDED from C:\WORK\PROJECTS\mall_app\modules\openglFloorMap\app\src\main\AndroidManifest.xml:21:5-30
 	android:versionCode
-		ADDED from C:\WORK\PROJECTS\mall_app\test\HelloOpenGLES20\app\src\main\AndroidManifest.xml:20:5-28
-		INJECTED from C:\WORK\PROJECTS\mall_app\test\HelloOpenGLES20\app\src\main\AndroidManifest.xml
-		INJECTED from C:\WORK\PROJECTS\mall_app\test\HelloOpenGLES20\app\src\main\AndroidManifest.xml
+		ADDED from C:\WORK\PROJECTS\mall_app\modules\openglFloorMap\app\src\main\AndroidManifest.xml:20:5-28
+		INJECTED from C:\WORK\PROJECTS\mall_app\modules\openglFloorMap\app\src\main\AndroidManifest.xml
+		INJECTED from C:\WORK\PROJECTS\mall_app\modules\openglFloorMap\app\src\main\AndroidManifest.xml
 	xmlns:android
-		ADDED from C:\WORK\PROJECTS\mall_app\test\HelloOpenGLES20\app\src\main\AndroidManifest.xml:18:5-63
+		ADDED from C:\WORK\PROJECTS\mall_app\modules\openglFloorMap\app\src\main\AndroidManifest.xml:18:5-63
 uses-feature#0x00020000
-ADDED from C:\WORK\PROJECTS\mall_app\test\HelloOpenGLES20\app\src\main\AndroidManifest.xml:26:5-78
+ADDED from C:\WORK\PROJECTS\mall_app\modules\openglFloorMap\app\src\main\AndroidManifest.xml:26:5-78
 	android:glEsVersion
-		ADDED from C:\WORK\PROJECTS\mall_app\test\HelloOpenGLES20\app\src\main\AndroidManifest.xml:26:19-51
+		ADDED from C:\WORK\PROJECTS\mall_app\modules\openglFloorMap\app\src\main\AndroidManifest.xml:26:19-51
 	android:required
-		ADDED from C:\WORK\PROJECTS\mall_app\test\HelloOpenGLES20\app\src\main\AndroidManifest.xml:26:52-75
+		ADDED from C:\WORK\PROJECTS\mall_app\modules\openglFloorMap\app\src\main\AndroidManifest.xml:26:52-75
 application
-ADDED from C:\WORK\PROJECTS\mall_app\test\HelloOpenGLES20\app\src\main\AndroidManifest.xml:28:5-40:19
+ADDED from C:\WORK\PROJECTS\mall_app\modules\openglFloorMap\app\src\main\AndroidManifest.xml:28:5-40:19
 	android:label
-		ADDED from C:\WORK\PROJECTS\mall_app\test\HelloOpenGLES20\app\src\main\AndroidManifest.xml:30:13-45
+		ADDED from C:\WORK\PROJECTS\mall_app\modules\openglFloorMap\app\src\main\AndroidManifest.xml:30:13-45
 	android:allowBackup
-		ADDED from C:\WORK\PROJECTS\mall_app\test\HelloOpenGLES20\app\src\main\AndroidManifest.xml:31:13-39
+		ADDED from C:\WORK\PROJECTS\mall_app\modules\openglFloorMap\app\src\main\AndroidManifest.xml:31:13-39
 	android:icon
-		ADDED from C:\WORK\PROJECTS\mall_app\test\HelloOpenGLES20\app\src\main\AndroidManifest.xml:29:13-49
+		ADDED from C:\WORK\PROJECTS\mall_app\modules\openglFloorMap\app\src\main\AndroidManifest.xml:29:13-49
 activity#com.example.android.opengl.OpenGLES20Activity
-ADDED from C:\WORK\PROJECTS\mall_app\test\HelloOpenGLES20\app\src\main\AndroidManifest.xml:32:9-39:20
+ADDED from C:\WORK\PROJECTS\mall_app\modules\openglFloorMap\app\src\main\AndroidManifest.xml:32:9-39:20
 	android:label
-		ADDED from C:\WORK\PROJECTS\mall_app\test\HelloOpenGLES20\app\src\main\AndroidManifest.xml:34:17-49
+		ADDED from C:\WORK\PROJECTS\mall_app\modules\openglFloorMap\app\src\main\AndroidManifest.xml:34:17-49
 	android:name
-		ADDED from C:\WORK\PROJECTS\mall_app\test\HelloOpenGLES20\app\src\main\AndroidManifest.xml:33:17-77
+		ADDED from C:\WORK\PROJECTS\mall_app\modules\openglFloorMap\app\src\main\AndroidManifest.xml:33:17-77
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
-ADDED from C:\WORK\PROJECTS\mall_app\test\HelloOpenGLES20\app\src\main\AndroidManifest.xml:35:13-38:29
+ADDED from C:\WORK\PROJECTS\mall_app\modules\openglFloorMap\app\src\main\AndroidManifest.xml:35:13-38:29
 action#android.intent.action.MAIN
-ADDED from C:\WORK\PROJECTS\mall_app\test\HelloOpenGLES20\app\src\main\AndroidManifest.xml:36:17-69
+ADDED from C:\WORK\PROJECTS\mall_app\modules\openglFloorMap\app\src\main\AndroidManifest.xml:36:17-69
 	android:name
-		ADDED from C:\WORK\PROJECTS\mall_app\test\HelloOpenGLES20\app\src\main\AndroidManifest.xml:36:25-66
+		ADDED from C:\WORK\PROJECTS\mall_app\modules\openglFloorMap\app\src\main\AndroidManifest.xml:36:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\WORK\PROJECTS\mall_app\test\HelloOpenGLES20\app\src\main\AndroidManifest.xml:37:17-77
+ADDED from C:\WORK\PROJECTS\mall_app\modules\openglFloorMap\app\src\main\AndroidManifest.xml:37:17-77
 	android:name
-		ADDED from C:\WORK\PROJECTS\mall_app\test\HelloOpenGLES20\app\src\main\AndroidManifest.xml:37:27-74
+		ADDED from C:\WORK\PROJECTS\mall_app\modules\openglFloorMap\app\src\main\AndroidManifest.xml:37:27-74
 uses-sdk
-INJECTED from C:\WORK\PROJECTS\mall_app\test\HelloOpenGLES20\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\WORK\PROJECTS\mall_app\modules\openglFloorMap\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 	android:targetSdkVersion
-		INJECTED from C:\WORK\PROJECTS\mall_app\test\HelloOpenGLES20\app\src\main\AndroidManifest.xml
-		INJECTED from C:\WORK\PROJECTS\mall_app\test\HelloOpenGLES20\app\src\main\AndroidManifest.xml
+		INJECTED from C:\WORK\PROJECTS\mall_app\modules\openglFloorMap\app\src\main\AndroidManifest.xml
+		INJECTED from C:\WORK\PROJECTS\mall_app\modules\openglFloorMap\app\src\main\AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from C:\WORK\PROJECTS\mall_app\test\HelloOpenGLES20\app\src\main\AndroidManifest.xml
-		INJECTED from C:\WORK\PROJECTS\mall_app\test\HelloOpenGLES20\app\src\main\AndroidManifest.xml
+		INJECTED from C:\WORK\PROJECTS\mall_app\modules\openglFloorMap\app\src\main\AndroidManifest.xml
+		INJECTED from C:\WORK\PROJECTS\mall_app\modules\openglFloorMap\app\src\main\AndroidManifest.xml
