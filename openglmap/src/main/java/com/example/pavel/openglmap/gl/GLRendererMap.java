@@ -34,7 +34,7 @@ public class GLRendererMap implements GLSurfaceView.Renderer {
 
 // Enable depth testing
 //        GLES20.glEnable(GLES20.GL_DEPTH_TEST);
-        GLES20.glEnable(GLES20.GL_DEPTH_TEST);
+//        GLES20.glEnable(GLES20.GL_DEPTH_TEST);
 // Accept fragment if it closer to the camera than the former one
         GLES20.glDepthFunc(GLES20.GL_LESS);
         Venue venue = new Venue();
@@ -74,34 +74,34 @@ public class GLRendererMap implements GLSurfaceView.Renderer {
         Point point8 = new Point();
         point8.x = 1.f;
         point8.y = -0.5f;
-
+        float[] color =new float[]{0.5f, .50f, .50f, 1.0f};
         Wall object = new Wall(point1, point2, 0.1f);//red
-        object.color = new float[]{1.0f, 0.0f, 0.0f, 1.0f};
+        object.color =color ;// new float[]{1.0f, 0.0f, 0.0f, 1.0f};
         venue.getWallList().add(object);
 
         Wall object2 = new Wall(point1, point5, 0.1f);//green
-        object2.color = new float[]{0.0f, 1.0f, 0.0f, 1.0f};
+        object2.color =color ;// new float[]{0.0f, 1.0f, 0.0f, 1.0f};
         venue.getWallList().add(object2);
 
         Wall object3 = new Wall(point2, point3, 0.1f);//blue
-        object3.color = new float[]{0.0f, 0.0f, 1.0f, 1.0f};
+        object3.color =color ;// new float[]{0.0f, 0.0f, 1.0f, 1.0f};
         venue.getWallList().add(object3);
 ////
 ////
         Wall object4 = new Wall(point5, point4, 0.1f);
-        object4.color = new float[]{1.0f, 1.0f, 0.0f, 1.0f};
+        object4.color =color ;// new float[]{1.0f, 1.0f, 0.0f, 1.0f};
         venue.getWallList().add(object4);
 ////
         Wall object5 = new Wall(point3, point6, 0.1f);
-        object5.color = new float[]{1.0f, 0.0f, 1.0f, 1.0f};
+        object5.color =color ;// new float[]{1.0f, 0.0f, 1.0f, 1.0f};
         venue.getWallList().add(object5);
 
         Wall object6 = new Wall(point4, point7, 0.1f);
-        object6.color = new float[]{1.0f, .50f, 1.0f, 1.0f};
+        object6.color =color ;// new float[]{1.0f, .50f, 1.0f, 1.0f};
         venue.getWallList().add(object6);
 
         Wall object7 = new Wall(point6, point7, 0.1f);
-        object7.color = new float[]{1.0f, .50f, .50f, 1.0f};
+        object7.color =color ;// new float[]{1.0f, .50f, .50f, 1.0f};
         venue.getWallList().add(object7);
         venueModelOpenGLES2DrawingClass = new VenueModelOpenGLES2DrawingClass(venue);
 //        myShapes.put("Line", new MyGeneralOpenGLES2DrawingClass(3,

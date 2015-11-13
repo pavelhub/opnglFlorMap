@@ -1,7 +1,5 @@
 package com.example.pavel.openglmap.gl.servermodel;
 
-import android.util.FloatMath;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,10 +19,12 @@ public class Wall {
     public float bPerp2;
     public float bPerp1;
     public float kPerp;
+    public float totalDistance = 0;
 
     public Wall(Point poit1, Point poit2, float weight) {
         this.point1 = poit1;
         this.point2 = poit2;
+        totalDistance = (float) getDistanceToSegment(poit1, poit2);
         this.weight = weight;
         getK();
         getB();
@@ -41,7 +41,7 @@ public class Wall {
         float halfWeight = weight / 2.f;
 
         bParalel1 = (float) (halfWeight * Math.sqrt(k * k + 1) + b);
-        bParalel2 = (float) (-halfWeight *Math.sqrt(k * k + 1) + b);
+        bParalel2 = (float) (-halfWeight * Math.sqrt(k * k + 1) + b);
         if (k == 0) {
 //            bX = halfWeight;
             bParalel1 = b - halfWeight;//weight / () k* point1.x+poit1.y+bb - ;
@@ -58,13 +58,15 @@ public class Wall {
 
 
     }
+
     public static float sqrt(float f) {
         final float xhalf = f * 0.5F;
         float y = Float.intBitsToFloat(0x5f375a86 - (Float.floatToIntBits(f) >> 1)); // evil floating point bit level hacking -- Use 0x5f375a86 instead of 0x5f3759df, due to slight accuracy increase. (Credit to Chris Lomont)
-        y = y * (1.5F - (xhalf * y * y)); 	// Newton step, repeating increases accuracy
+        y = y * (1.5F - (xhalf * y * y));    // Newton step, repeating increases accuracy
         y = y * (1.5F - (xhalf * y * y));
         return f * y;
     }
+
     private Point getPointParalePerp(Point point, float kParale, float bParalel, float kPerp, float bPerp) {
         Point pointPerp = new Point();
         if (point1.x == point2.x) {
@@ -81,15 +83,19 @@ public class Wall {
         return pointPerp;
     }
 
+    List<Point> listParalel;
+
     public List<Point> getListPerpendecularparalellPoints() {
-        List<Point> list = new ArrayList<>();
-        list.add(getPointParalePerp(point1, kParale, bParalel1, kPerp, bPerp1));
-        list.add(getPointParalePerp(point1, kParale, bParalel2, kPerp, bPerp1));
+        if (listParalel == null) {
+            listParalel = new ArrayList<>();
 
-        list.add(getPointParalePerp(point2, kParale, bParalel2, kPerp, bPerp2));
-        list.add(getPointParalePerp(point2, kParale, bParalel1, kPerp, bPerp2));
+            listParalel.add(getPointParalePerp(point1, kParale, bParalel1, kPerp, bPerp1));
+            listParalel.add(getPointParalePerp(point1, kParale, bParalel2, kPerp, bPerp1));
+            listParalel.add(getPointParalePerp(point2, kParale, bParalel2, kPerp, bPerp2));
+            listParalel.add(getPointParalePerp(point2, kParale, bParalel1, kPerp, bPerp2));
 
-        return list;
+        }
+        return listParalel;
     }
 
 
@@ -132,6 +138,113 @@ public class Wall {
 
     public float getPerpY(float x, float kPerp, float bPerp) {
         return kPerp * x + bPerp;
+    }
+
+    private boolean isPointInWall(Point point) {
+        if (totalDistance == getDistanceToSegment(point, point1) + getDistanceToSegment(point, point2))
+            return true;
+        else return false;
+    }
+
+
+    public Point getPointOutWall(Wall nextWall) {
+        if (point1.equals(nextWall.point1)) {
+            return getPointProjectionNotInWall(this, point1, nextWall.getListPerpendecularparalellPoints());
+        } else if (point1.equals(nextWall.point2)) {
+            return getPointProjectionNotInWall(this, point1, nextWall.getListPerpendecularparalellPoints());
+        } else if (point2.equals(nextWall.point1)) {
+            return getPointProjectionNotInWall(this, point2, nextWall.getListPerpendecularparalellPoints());
+        } else if (point2.equals(nextWall.point2)) {
+            return getPointProjectionNotInWall(this, point2, nextWall.getListPerpendecularparalellPoints());
+        }
+
+//
+//            if (!isPointInPeremetr(nextWall.getListPerpendecularparalellPoints().get(0)))
+//                return nextWall.getListPerpendecularparalellPoints().get(0);
+//            else
+////            if (!isPointInPeremetr(nextWall.getListPerpendecularparalellPoints().get(1)))
+//                return nextWall.getListPerpendecularparalellPoints().get(1);
+//
+//        } else if (point1.equals(nextWall.point2)) {
+//            if (!isPointInPeremetr(nextWall.getListPerpendecularparalellPoints().get(2)))
+//                return nextWall.getListPerpendecularparalellPoints().get(2);
+//            else
+////            if (!isPointInPeremetr(getListPerpendecularparalellPoints().get(3)))
+//                return nextWall.getListPerpendecularparalellPoints().get(3);
+//
+//        } else if (point2.equals(nextWall.point1)) {
+//            if (!isPointInPeremetr(nextWall.getListPerpendecularparalellPoints().get(0)))
+//                return nextWall.getListPerpendecularparalellPoints().get(0);
+//            else
+////            if (!isPointInPeremetr(nextWall.getListPerpendecularparalellPoints().get(1)))
+//                return nextWall.getListPerpendecularparalellPoints().get(1);
+//
+//        } else if (point1.equals(nextWall.point2)) {
+//            if (!isPointInPeremetr(nextWall.getListPerpendecularparalellPoints().get(2)))
+//                return nextWall.getListPerpendecularparalellPoints().get(2);
+//            else
+////            if (!isPointInPeremetr(getListPerpendecularparalellPoints().get(3)))
+//                return nextWall.getListPerpendecularparalellPoints().get(3);
+//
+//        }
+        return null;
+    }
+
+    public static Point getPointProjectionInWall(Wall wall, Point point1, Point point2) {
+        if (!wall.isPointInPeremetr(point1))
+            return point1;
+        else if (!wall.isPointInPeremetr(point2))
+            return point2;
+        return null;
+    }
+
+    public static Point getPointProjectionNotInWall(Wall wall, Point toPoint, List<Point> points) {
+        List<Point> pointsNotIn = new ArrayList<>();
+        for (Point point : points) {
+            if (!wall.isPointInPeremetr(point))
+                pointsNotIn.add(point);
+        }
+        Point current = pointsNotIn.get(0);
+        float minDist = 99999;
+        for (Point point : pointsNotIn) {
+            double distanceToSegment = getDistanceToSegment(point, toPoint);
+            if (distanceToSegment <= minDist) {
+                current = point;
+                minDist = (float) distanceToSegment;
+            }
+        }
+
+        return current;
+    }
+
+    private boolean isPointInPeremetr(Point point) {
+
+        if (getListPerpendecularparalellPoints().get(0).x < getListPerpendecularparalellPoints().get(2).x && getListPerpendecularparalellPoints().get(0).y < getListPerpendecularparalellPoints().get(2).y) {
+            if (point.x >= getListPerpendecularparalellPoints().get(0).x && point.x <= getListPerpendecularparalellPoints().get(2).x && point.y >= getListPerpendecularparalellPoints().get(0).y && point.y <= getListPerpendecularparalellPoints().get(2).y) {
+                return true;
+            }
+        } else if (getListPerpendecularparalellPoints().get(0).x > getListPerpendecularparalellPoints().get(2).x && getListPerpendecularparalellPoints().get(0).y > getListPerpendecularparalellPoints().get(2).y) {
+            if (point.x >= getListPerpendecularparalellPoints().get(2).x && point.x <= getListPerpendecularparalellPoints().get(0).x && point.y >= getListPerpendecularparalellPoints().get(2).y && point.y <= getListPerpendecularparalellPoints().get(0).y) {
+                return true;
+            }
+        } else if (getListPerpendecularparalellPoints().get(0).x > getListPerpendecularparalellPoints().get(2).x && getListPerpendecularparalellPoints().get(0).y < getListPerpendecularparalellPoints().get(2).y) {
+            if (point.x >= getListPerpendecularparalellPoints().get(2).x && point.x <= getListPerpendecularparalellPoints().get(0).x && point.y >= getListPerpendecularparalellPoints().get(0).y && point.y <= getListPerpendecularparalellPoints().get(2).y) {
+                return true;
+            }
+        } else if (getListPerpendecularparalellPoints().get(0).x < getListPerpendecularparalellPoints().get(2).x && getListPerpendecularparalellPoints().get(0).y > getListPerpendecularparalellPoints().get(2).y) {
+            if (point.x >= getListPerpendecularparalellPoints().get(0).x && point.x <= getListPerpendecularparalellPoints().get(2).x && point.y >= getListPerpendecularparalellPoints().get(2).y && point.y <= getListPerpendecularparalellPoints().get(0).y) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public static double getDistanceToSegment(Point point, Point point2) {
+
+        return Math.sqrt(
+                Math.pow(point.x - point2.x, 2) +
+                        Math.pow(point.y - point2.y, 2));
     }
 
 //    private Point getPointOnSegment() {

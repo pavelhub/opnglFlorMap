@@ -1,5 +1,7 @@
 package com.example.pavel.openglmap.gl.model;
 
+import android.util.Log;
+
 import com.example.pavel.openglmap.gl.servermodel.Point;
 import com.example.pavel.openglmap.gl.servermodel.Venue;
 import com.example.pavel.openglmap.gl.servermodel.Wall;
@@ -13,8 +15,8 @@ import java.util.List;
 public class VenueModelOpenGLES2DrawingClass {
 
 
-public    final String vertexShader =
-                      "uniform mat4 u_MVPMatrix;      \n"     // A constant representing the combined model/view/projection matrix.
+    public final String vertexShader =
+            "uniform mat4 u_MVPMatrix;      \n"     // A constant representing the combined model/view/projection matrix.
                     + "uniform mat4 u_MVMatrix;       \n"     // A constant representing the combined model/view matrix.
                     + "uniform vec3 u_LightPos;       \n"     // The position of the light in eye space.
 
@@ -75,7 +77,23 @@ public    final String vertexShader =
             6, 3, 7
 
     };
+    private short drawOrderTriangle[] = {
+            0, 1, 2,
+            3, 4, 5,
+
+            0, 2, 4,
+            0, 4, 1,
+
+            0, 2, 5,
+            0, 5, 3,
+
+            1, 4, 5,
+            1, 5, 2,
+
+    };
+
     List<MyGeneralOpenGLES2DrawingClass> coordsPerVertex = new ArrayList<>();
+    List<MyGeneralOpenGLES2DrawingClass> triangleDraw = new ArrayList<>();
 
 
     public VenueModelOpenGLES2DrawingClass(Venue venue) {
@@ -88,7 +106,7 @@ public    final String vertexShader =
 
             List<Point> listProjections = wall.getListPerpendecularparalellPoints();
             Point parale0 = listProjections.get(0);//point.getPointParalelWeight(wall.k, wall.b - waight_2);
-            Point parale1 = listProjections.get(1);//point.getPointParalelWeight(wall.k, wall.b + waight_2);
+            Point parale1 = listProjections.get(1);//listProjections.get(1);//point.getPointParalelWeight(wall.k, wall.b + waight_2);
 
 
             Point parale2 = listProjections.get(2);//point.getPointParalelWeight(wall.k, wall.b + waight_2);
@@ -110,7 +128,7 @@ public    final String vertexShader =
             System.arraycopy(pointMas, 0, coords, arrayPosition, pointMas.length);
             arrayPosition += pointMas.length;
 
-            //z-1
+//            //z-1
             pointMas = parale0.getPointMas(-1.f);
             System.arraycopy(pointMas, 0, coords, arrayPosition, pointMas.length);
             arrayPosition += pointMas.length;
@@ -130,13 +148,77 @@ public    final String vertexShader =
             coordsPerVertex.add(new MyGeneralOpenGLES2DrawingClass(3, coords, wall.color, drawOrder));
         }
 
+        for (Wall wall : venue.getWallList()) {
+            Log.e("GETMODEL TIRANGLE", "WAL:" + wall.point1.x + "," + wall.point1.y + ";" + wall.point2.x + "," + wall.point2.y);
+            for (int i = 0; i < venue.getWallList().size(); i++) {
+                Wall wallSecond = venue.getWallList().get(i);
+                Log.e("GETMODEL TIRANGLE", "WAL2:" + wallSecond.point1.x + "," + wallSecond.point1.y + ";" + wallSecond.point2.x + "," + wallSecond.point2.y);
+//                Log.e("GETMODEL TIRANGLE", "WAL:" + wall.point1.x + "," + wall.point1.y + ";" + wall.point2.x + "," + wall.point2.y
+//                        + " WAL2:" + wallSecond.point1.x + "," + wallSecond.point1.y + ";" + wallSecond.point2.x + "," + wallSecond.point2.y);
+                if (!wall.equals(wallSecond)) {
+                    if (wall.point1.equals(wallSecond.point1) || wall.point1.equals(wallSecond.point2)
+                            ||wall.point2.equals(wallSecond.point1)||wall.point2.equals(wallSecond.point2)
+                            ) {
+                        Log.e("GETMODEL TIRANGLE SAME", "WAL:" + wall.point1.x + "," + wall.point1.y + ";" + wall.point2.x + "," + wall.point2.y
+                                + " WAL2:" + wallSecond.point1.x + "," + wallSecond.point1.y + ";" + wallSecond.point2.x + "," + wallSecond.point2.y);
+                        Point pointOutWall = wall.getPointOutWall(wallSecond);
+                        Point pointOutWall2 = wallSecond.getPointOutWall(wall);
+                        Point centeer = wall.point1;
+                        if(wall.point2.equals(wallSecond.point1) || wall.point2.equals(wallSecond.point2))
+                            centeer = wall.point2;
+                        createNewTriangleFor2Wals(wallSecond, pointOutWall, pointOutWall2, centeer);
+                    }
+                }
+//                    else if (wall.point1.equals(wallSecond.point2)) {
+//                        Point pointOutWall = wall.getPointOutWall(wallSecond);
+//                        Point pointOutWall2 = wallSecond.getPointOutWall(wall);
+//                        Point centeer = wall.point1;
+//                        createNewTriangleFor2Wals(wall, pointOutWall, pointOutWall2, centeer);
+//                    }
+            }
+        }
+    }
 
+    private void createNewTriangleFor2Wals(Wall wall, Point pointOutWall, Point pointOutWall2, Point centeer) {
+        if (pointOutWall != null && pointOutWall2 != null) {
+            float coords[] = new float[3 * 2 * 3];
+            int arrayPosition = 0;
+            float[] pointMas = pointOutWall.getPointMas(0f);
+            System.arraycopy(pointMas, 0, coords, arrayPosition, pointMas.length);
+            arrayPosition += pointMas.length;
+
+            pointMas = pointOutWall2.getPointMas(0f);
+            System.arraycopy(pointMas, 0, coords, arrayPosition, pointMas.length);
+            arrayPosition += pointMas.length;
+
+            pointMas = centeer.getPointMas(0f);
+            System.arraycopy(pointMas, 0, coords, arrayPosition, pointMas.length);
+            arrayPosition += pointMas.length;
+
+            //Z -1
+            pointMas = pointOutWall.getPointMas(-1f);
+            System.arraycopy(pointMas, 0, coords, arrayPosition, pointMas.length);
+            arrayPosition += pointMas.length;
+
+            pointMas = pointOutWall2.getPointMas(-1f);
+            System.arraycopy(pointMas, 0, coords, arrayPosition, pointMas.length);
+            arrayPosition += pointMas.length;
+
+            pointMas = centeer.getPointMas(-1f);
+            System.arraycopy(pointMas, 0, coords, arrayPosition, pointMas.length);
+            arrayPosition += pointMas.length;
+//            new float[]{0.5f, .50f, .50f, 1.0f}
+            triangleDraw.add(new MyGeneralOpenGLES2DrawingClass(3, coords, new float[]{0.5f, .50f, .50f, 1.0f}, drawOrderTriangle));
+        }
     }
 
 
     public void draw(float[] mvpMatrix) {
+        for (MyGeneralOpenGLES2DrawingClass item : triangleDraw)
+            item.draw(mvpMatrix);
         for (MyGeneralOpenGLES2DrawingClass item : coordsPerVertex)
             item.draw(mvpMatrix);
+
     }
 
 
