@@ -29,6 +29,9 @@ public class GLRendererMap implements GLSurfaceView.Renderer {
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {
         GLES20.glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+//        mPerVertexProgramHandle = createAndLinkProgram(vertexShaderHandle, fragmentShaderHandle,
+//                new String[] {"a_Position",  "a_Color", "a_Normal"});
+
 //        / Use culling to remove back faces.
 //        GLES20.glEnable(GLES20.GL_CULL_FACE);
 

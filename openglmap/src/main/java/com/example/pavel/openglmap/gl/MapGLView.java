@@ -1,18 +1,16 @@
 package com.example.pavel.openglmap.gl;
 
-import android.app.Activity;
 import android.content.Context;
 import android.graphics.Point;
 import android.opengl.GLSurfaceView;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 
 /**
  * Created by Pavel on 06.11.2015.
  */
 public class MapGLView extends GLSurfaceView {
-    GLRendererMap glRendererMap;
+    LessonTwoRenderer glRendererMap;
 
     public MapGLView(Context context) {
         super(context);
@@ -26,10 +24,10 @@ public class MapGLView extends GLSurfaceView {
 
     private void initViewContext() {
         setEGLContextClientVersion(2);
-        glRendererMap = new GLRendererMap();
+        glRendererMap = new LessonTwoRenderer();
         setRenderer(glRendererMap);
 
-        setRenderMode(RENDERMODE_WHEN_DIRTY);
+//        setRenderMode(RENDERMODE_WHEN_DIRTY);
     }
     private final float TOUCH_SCALE_FACTOR = 180.0f / 320;
     private float mPreviousX;
@@ -59,9 +57,9 @@ public class MapGLView extends GLSurfaceView {
                     dy = dy * -1 ;
                 }
 
-                glRendererMap.setmAngle(
-                        glRendererMap.getmAngle() -
-                                ((dx + dy) * TOUCH_SCALE_FACTOR));  // = 180.0f / 320
+//                glRendererMap.setmAngle(
+//                        glRendererMap.getmAngle() -
+//                                ((dx + dy) * TOUCH_SCALE_FACTOR));  // = 180.0f / 320
                 requestRender();
         }
 

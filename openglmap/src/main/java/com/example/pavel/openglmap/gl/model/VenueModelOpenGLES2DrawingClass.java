@@ -57,6 +57,7 @@ public class VenueModelOpenGLES2DrawingClass {
                     + "{                              \n"
                     + "   gl_FragColor = v_Color;     \n"     // Pass the color directly through the pipeline.
                     + "}                              \n";
+
     private short drawOrder[] = {
             0, 1, 2,
             0, 2, 3,
@@ -92,8 +93,8 @@ public class VenueModelOpenGLES2DrawingClass {
 
     };
 
-    List<MyGeneralOpenGLES2DrawingClass> coordsPerVertex = new ArrayList<>();
-    List<MyGeneralOpenGLES2DrawingClass> triangleDraw = new ArrayList<>();
+    public List<MyGeneralOpenGLES2DrawingClass> coordsPerVertex = new ArrayList<>();
+    public List<MyGeneralOpenGLES2DrawingClass> triangleDraw = new ArrayList<>();
 
 
     public VenueModelOpenGLES2DrawingClass(Venue venue) {
@@ -214,10 +215,10 @@ public class VenueModelOpenGLES2DrawingClass {
 
 
     public void draw(float[] mvpMatrix) {
-        for (MyGeneralOpenGLES2DrawingClass item : triangleDraw)
-            item.draw(mvpMatrix);
-        for (MyGeneralOpenGLES2DrawingClass item : coordsPerVertex)
-            item.draw(mvpMatrix);
+//        for (MyGeneralOpenGLES2DrawingClass item : triangleDraw)
+//            item.draw(mvpMatrix);
+//        for (MyGeneralOpenGLES2DrawingClass item : coordsPerVertex)
+//            item.draw(mvpMatrix);
 
     }
 

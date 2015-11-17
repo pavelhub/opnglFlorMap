@@ -32,12 +32,12 @@ public class MyGeneralOpenGLES2DrawingClass {
                     "  gl_FragColor = vColor;" +
                     "}";
 
-    private final FloatBuffer vertexBuffer;
-    private final int mProgram;
+    public final FloatBuffer vertexBuffer;
+//    private final int mProgram;
     private int mPositionHandle;
     private int mColorHandle;
     private int mMVPMatrixHandle;
-    private ShortBuffer drawListBuffer;
+    public ShortBuffer drawListBuffer;
     private short drawOrder[] = {0, 1, 2};
 
     int COORDS_PER_VERTEX = 0;// Argument1
@@ -46,6 +46,10 @@ public class MyGeneralOpenGLES2DrawingClass {
     private final int vertexStride; // 4 bytes per vertex
     public float[] color = new float[4];
     int drawMode = GLES20.GL_TRIANGLES;
+    /**
+     * Stores a copy of the model matrix specifically for the light position.
+     */
+    private float[] mLightModelMatrix = new float[16];
 
     public MyGeneralOpenGLES2DrawingClass(int coordsPerVertex, float[] coordinates, float[] color, short[] drawOrder) {
         this.drawOrder = drawOrder;
@@ -81,15 +85,15 @@ public class MyGeneralOpenGLES2DrawingClass {
         drawListBuffer.position(0);
         //////////////////////////////////////////
         //   prepare shaders and OpenGL program
-        int vertexShader = loadShader(
-                GLES20.GL_VERTEX_SHADER, vertexShaderCode);
-        int fragmentShader = loadShader(
-                GLES20.GL_FRAGMENT_SHADER, fragmentShaderCode);
-
-        mProgram = GLES20.glCreateProgram();             // create empty OpenGL Program
-        GLES20.glAttachShader(mProgram, vertexShader);   // add the vertex shader to program
-        GLES20.glAttachShader(mProgram, fragmentShader); // add the fragment shader to program
-        GLES20.glLinkProgram(mProgram);                  // create OpenGL program executables
+//        int vertexShader = loadShader(
+//                GLES20.GL_VERTEX_SHADER, vertexShaderCode);
+//        int fragmentShader = loadShader(
+//                GLES20.GL_FRAGMENT_SHADER, fragmentShaderCode);
+//
+//        mProgram = GLES20.glCreateProgram();             // create empty OpenGL Program
+//        GLES20.glAttachShader(mProgram, vertexShader);   // add the vertex shader to program
+//        GLES20.glAttachShader(mProgram, fragmentShader); // add the fragment shader to program
+//        GLES20.glLinkProgram(mProgram);                  // create OpenGL program executables
 
         /////////////////////////////////////////////////
     }
@@ -106,50 +110,112 @@ public class MyGeneralOpenGLES2DrawingClass {
 
         return shader;
     }
+public void draw(float mvpMatix)
+{
+//    // Set program handles for cube drawing.
+//    mMVPMatrixHandle = GLES20.glGetUniformLocation(mPerVertexProgramHandle, "u_MVPMatrix");
+//    mMVMatrixHandle = GLES20.glGetUniformLocation(mPerVertexProgramHandle, "u_MVMatrix");
+//    mLightPosHandle = GLES20.glGetUniformLocation(mPerVertexProgramHandle, "u_LightPos");
+//    mPositionHandle = GLES20.glGetAttribLocation(mPerVertexProgramHandle, "a_Position");
+//    mColorHandle = GLES20.glGetAttribLocation(mPerVertexProgramHandle, "a_Color");
+//    mNormalHandle = GLES20.glGetAttribLocation(mPerVertexProgramHandle, "a_Normal");
+//
+//
+//    // Calculate position of the light. Rotate and then push into the distance.
+//    Matrix.setIdentityM(mLightModelMatrix, 0);
+//    Matrix.translateM(mLightModelMatrix, 0, 0.0f, 0.0f, -5.0f);
+//    Matrix.rotateM(mLightModelMatrix, 0, angleInDegrees, 0.0f, 1.0f, 0.0f);
+//    Matrix.translateM(mLightModelMatrix, 0, 0.0f, 0.0f, 2.0f);
+//
+//    Matrix.multiplyMV(mLightPosInWorldSpace, 0, mLightModelMatrix, 0, mLightPosInModelSpace, 0);
+//    Matrix.multiplyMV(mLightPosInEyeSpace, 0, mViewMatrix, 0, mLightPosInWorldSpace, 0);
+}
 
-    public void draw(float[] mvpMatrix) {
-        // Add program to OpenGL environment
-        GLES20.glUseProgram(mProgram);
+//    public void draw(float[] mvpMatrix) {
+//        // Add program to OpenGL environment
+//        GLES20.glUseProgram(mProgram);
+//
+//        // get handle to vertex shader's vPosition member
+//        mPositionHandle = GLES20.glGetAttribLocation(mProgram, "vPosition");
+//
+//        // Enable a handle to the triangle vertices
+//        GLES20.glEnableVertexAttribArray(mPositionHandle);
+//
+//        // Prepare the triangle coordinate data
+//        GLES20.glVertexAttribPointer(
+//                mPositionHandle, COORDS_PER_VERTEX,
+//                GLES20.GL_FLOAT, false,
+//                vertexStride, vertexBuffer);
+//
+//        // get handle to fragment shader's vColor member
+//        mColorHandle = GLES20.glGetUniformLocation(mProgram, "vColor");
+//
+//        // Set color for drawing the triangle
+//        GLES20.glUniform4fv(mColorHandle, 1, color, 0);
+//
+//        // get handle to shape's transformation matrix
+//        mMVPMatrixHandle = GLES20.glGetUniformLocation(mProgram, "uMVPMatrix");
+//
+//
+//        // Apply the projection and view transformation
+//        GLES20.glUniformMatrix4fv(mMVPMatrixHandle, 1, false, mvpMatrix, 0);
+//
+//
+//        // Draw the triangle
+//        //GLES20.glDrawArrays(drawMode, 0, vertexCount);
+//        if (drawOrder.length == 36)//cube
+//        {
+//            GLES20.glDrawElements(drawMode, 36, GLES20.GL_UNSIGNED_SHORT, drawListBuffer);
+//        } else if (coords.length > 100)
+//            GLES20.glDrawArrays(GLES20.GL_TRIANGLE_FAN, 0, 364);
+//        else
+//            GLES20.glDrawElements(drawMode, drawOrder.length, GLES20.GL_UNSIGNED_SHORT, drawListBuffer);
+//
+//        // Disable vertex array
+//        GLES20.glDisableVertexAttribArray(mPositionHandle);
+//    }
 
-        // get handle to vertex shader's vPosition member
-        mPositionHandle = GLES20.glGetAttribLocation(mProgram, "vPosition");
-
-        // Enable a handle to the triangle vertices
-        GLES20.glEnableVertexAttribArray(mPositionHandle);
-
-        // Prepare the triangle coordinate data
-        GLES20.glVertexAttribPointer(
-                mPositionHandle, COORDS_PER_VERTEX,
-                GLES20.GL_FLOAT, false,
-                vertexStride, vertexBuffer);
-
-        // get handle to fragment shader's vColor member
-        mColorHandle = GLES20.glGetUniformLocation(mProgram, "vColor");
-
-        // Set color for drawing the triangle
-        GLES20.glUniform4fv(mColorHandle, 1, color, 0);
-
-        // get handle to shape's transformation matrix
-        mMVPMatrixHandle = GLES20.glGetUniformLocation(mProgram, "uMVPMatrix");
-
-
-        // Apply the projection and view transformation
-        GLES20.glUniformMatrix4fv(mMVPMatrixHandle, 1, false, mvpMatrix, 0);
-
-
-        // Draw the triangle
-        //GLES20.glDrawArrays(drawMode, 0, vertexCount);
-        if (drawOrder.length == 36)//cube
-        {
-            GLES20.glDrawElements(drawMode, 36, GLES20.GL_UNSIGNED_SHORT, drawListBuffer);
-        } else if (coords.length > 100)
-            GLES20.glDrawArrays(GLES20.GL_TRIANGLE_FAN, 0, 364);
-        else
-            GLES20.glDrawElements(drawMode, drawOrder.length, GLES20.GL_UNSIGNED_SHORT, drawListBuffer);
-
-        // Disable vertex array
-        GLES20.glDisableVertexAttribArray(mPositionHandle);
-    }
+//    public void draw(float[] mvpMatrix) {
+//        vertexBuffer.position(0);
+//        GLES20.glVertexAttribPointer(mPositionHandle, 3, GLES20.GL_FLOAT, false,
+//                0, vertexBuffer);
+//
+//        GLES20.glEnableVertexAttribArray(mPositionHandle);
+//
+//        // Pass in the color information
+//        drawListBuffer.position(0);
+//        GLES20.glVertexAttribPointer(mColorHandle, 4, GLES20.GL_FLOAT, false,
+//                0, drawListBuffer);
+//
+//        GLES20.glEnableVertexAttribArray(mColorHandle);
+//
+//        // Pass in the normal information
+//        mCubeNormals.position(0);
+//        GLES20.glVertexAttribPointer(mNormalHandle, mNormalDataSize, GLES20.GL_FLOAT, false,
+//                0, mCubeNormals);
+//
+//        GLES20.glEnableVertexAttribArray(mNormalHandle);
+//
+//        // This multiplies the view matrix by the model matrix, and stores the result in the MVP matrix
+//        // (which currently contains model * view).
+//        Matrix.multiplyMM(mMVPMatrix, 0, mViewMatrix, 0, mModelMatrix, 0);
+//
+//        // Pass in the modelview matrix.
+//        GLES20.glUniformMatrix4fv(mMVMatrixHandle, 1, false, mMVPMatrix, 0);
+//
+//        // This multiplies the modelview matrix by the projection matrix, and stores the result in the MVP matrix
+//        // (which now contains model * view * projection).
+//        Matrix.multiplyMM(mMVPMatrix, 0, mProjectionMatrix, 0, mMVPMatrix, 0);
+//
+//        // Pass in the combined matrix.
+//        GLES20.glUniformMatrix4fv(mMVPMatrixHandle, 1, false, mMVPMatrix, 0);
+//
+//        // Pass in the light position in eye space.
+//        GLES20.glUniform3f(mLightPosHandle, mLightPosInEyeSpace[0], mLightPosInEyeSpace[1], mLightPosInEyeSpace[2]);
+//
+//        // Draw the cube.
+//        GLES20.glDrawArrays(GLES20.GL_TRIANGLES, 0, 36);
+//    }
 
     public boolean isTouched(float[] touchPoint)//x y z
     {
@@ -198,5 +264,50 @@ public class MyGeneralOpenGLES2DrawingClass {
         float d = (float) Math.sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
         return d;
 
+    }
+    private int createAndLinkProgram(final int vertexShaderHandle, final int fragmentShaderHandle, final String[] attributes)
+    {
+        int programHandle = GLES20.glCreateProgram();
+
+        if (programHandle != 0)
+        {
+            // Bind the vertex shader to the program.
+            GLES20.glAttachShader(programHandle, vertexShaderHandle);
+
+            // Bind the fragment shader to the program.
+            GLES20.glAttachShader(programHandle, fragmentShaderHandle);
+
+            // Bind attributes
+            if (attributes != null)
+            {
+                final int size = attributes.length;
+                for (int i = 0; i < size; i++)
+                {
+                    GLES20.glBindAttribLocation(programHandle, i, attributes[i]);
+                }
+            }
+
+            // Link the two shaders together into a program.
+            GLES20.glLinkProgram(programHandle);
+
+            // Get the link status.
+            final int[] linkStatus = new int[1];
+            GLES20.glGetProgramiv(programHandle, GLES20.GL_LINK_STATUS, linkStatus, 0);
+
+            // If the link failed, delete the program.
+            if (linkStatus[0] == 0)
+            {
+                Log.e("TAG", "Error compiling program: " + GLES20.glGetProgramInfoLog(programHandle));
+                GLES20.glDeleteProgram(programHandle);
+                programHandle = 0;
+            }
+        }
+
+        if (programHandle == 0)
+        {
+            throw new RuntimeException("Error creating program.");
+        }
+
+        return programHandle;
     }
 }

@@ -1,1 +1,1 @@
-include ':app', ':openglmap'
+include ':app', ':openglmap', ':sqlbriteprovider'
