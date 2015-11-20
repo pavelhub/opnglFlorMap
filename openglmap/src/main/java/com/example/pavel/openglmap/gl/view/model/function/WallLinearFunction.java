@@ -73,9 +73,7 @@ public class WallLinearFunction {
         System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
         arrayPosition += pointMas.length;
 //1
-        pointMas = start.getRight().getPointMas(0f);
-        System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
-        arrayPosition += pointMas.length;
+
 
         pointMas = end.getLeft().getPointMas(0f);
         System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
@@ -85,6 +83,9 @@ public class WallLinearFunction {
         System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
         arrayPosition += pointMas.length;
 //3
+        pointMas = start.getRight().getPointMas(0f);
+        System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
+        arrayPosition += pointMas.length;
 
 
         if (is3d) {
@@ -93,10 +94,6 @@ public class WallLinearFunction {
             System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
             arrayPosition += pointMas.length;
 //1
-            pointMas = start.getRight().getPointMas(-1f);
-            System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
-            arrayPosition += pointMas.length;
-
             pointMas = end.getLeft().getPointMas(-1f);
             System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
             arrayPosition += pointMas.length;
@@ -105,6 +102,9 @@ public class WallLinearFunction {
             System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
             arrayPosition += pointMas.length;
 //3
+            pointMas = start.getRight().getPointMas(-1f);
+            System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
+            arrayPosition += pointMas.length;
 
 
 

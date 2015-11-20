@@ -33,7 +33,7 @@ public class FloorWallsOverlay extends BaseOverlay {
                 builder.setWallFunction(wallLinearFunction);
                 wallViewModels.add(builder.build());
             }
-            break;
+//            break;
         }
         for (WallViewModel wallViewModel : wallViewModels) {
 
