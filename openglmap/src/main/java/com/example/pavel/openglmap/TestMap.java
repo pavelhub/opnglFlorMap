@@ -11,7 +11,7 @@ public class TestMap extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(new MapGLView(this));
-//        GLSurfaceView glSurfaceView = (GLSurfaceView) findViewById(R.id.GLSurfaceView);
+        MapGLView glSurfaceView = (MapGLView) findViewById(R.id.GLSurfaceView);
 
     }
 }

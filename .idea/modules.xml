@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/openglmap/openglmap.iml" filepath="$PROJECT_DIR$/openglmap/openglmap.iml" />
       <module fileurl="file://$PROJECT_DIR$/opnglFlorMap.iml" filepath="$PROJECT_DIR$/opnglFlorMap.iml" />
       <module fileurl="file://$PROJECT_DIR$/sqlbriteprovider/sqlbriteprovider.iml" filepath="$PROJECT_DIR$/sqlbriteprovider/sqlbriteprovider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sqlbriteprovider/sqlbriteprovider.iml" filepath="$PROJECT_DIR$/sqlbriteprovider/sqlbriteprovider.iml" />
     </modules>
   </component>
 </project>
