@@ -73,6 +73,10 @@ public class WallLinearFunction {
         System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
         arrayPosition += pointMas.length;
 //1
+        pointMas = start.getRight().getPointMas(0f);
+        System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
+        arrayPosition += pointMas.length;
+
         pointMas = end.getLeft().getPointMas(0f);
         System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
         arrayPosition += pointMas.length;
@@ -81,28 +85,27 @@ public class WallLinearFunction {
         System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
         arrayPosition += pointMas.length;
 //3
-        pointMas = start.getRight().getPointMas(0f);
-        System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
-        arrayPosition += pointMas.length;
-
 
 
         if (is3d) {
             //4
-            pointMas = start.getLeft().getPointMas(1f);
+            pointMas = start.getLeft().getPointMas(-1f);
             System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
             arrayPosition += pointMas.length;
 //1
-            pointMas = end.getLeft().getPointMas(1f);
+            pointMas = start.getRight().getPointMas(-1f);
+            System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
+            arrayPosition += pointMas.length;
+
+            pointMas = end.getLeft().getPointMas(-1f);
             System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
             arrayPosition += pointMas.length;
 //2
-            pointMas = end.getRight().getPointMas(1f);
+            pointMas = end.getRight().getPointMas(-1f);
             System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
             arrayPosition += pointMas.length;
 //3
-            pointMas = start.getRight().getPointMas(1f);
-            System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
+
 
 
         }
@@ -137,6 +140,109 @@ public class WallLinearFunction {
                     6, 3, 7
 
             };
+    }
+
+
+    public float[] getColor(boolean is3D) {
+        if (!is3D)
+            return new float[]{
+                    1.0f, 1.0f, 1.0f, 1.f
+            };
+        else {
+            return new float[]
+                    {
+                            // Front face (red)
+                            1.0f, 0.0f, 0.0f, 1.0f,
+                            1.0f, 0.0f, 0.0f, 1.0f,
+                            1.0f, 0.0f, 0.0f, 1.0f,
+                            1.0f, 0.0f, 0.0f, 1.0f,
+                            1.0f, 0.0f, 0.0f, 1.0f,
+                            1.0f, 0.0f, 0.0f, 1.0f,
+
+                            // Right face (green)
+                            0.0f, 1.0f, 0.0f, 1.0f,
+                            0.0f, 1.0f, 0.0f, 1.0f,
+                            0.0f, 1.0f, 0.0f, 1.0f,
+                            0.0f, 1.0f, 0.0f, 1.0f,
+                            0.0f, 1.0f, 0.0f, 1.0f,
+                            0.0f, 1.0f, 0.0f, 1.0f,
+
+                            // Back face (blue)
+                            0.0f, 0.0f, 1.0f, 1.0f,
+                            0.0f, 0.0f, 1.0f, 1.0f,
+                            0.0f, 0.0f, 1.0f, 1.0f,
+                            0.0f, 0.0f, 1.0f, 1.0f,
+                            0.0f, 0.0f, 1.0f, 1.0f,
+                            0.0f, 0.0f, 1.0f, 1.0f,
+
+                            // Left face (yellow)
+                            1.0f, 1.0f, 0.0f, 1.0f,
+                            1.0f, 1.0f, 0.0f, 1.0f,
+                            1.0f, 1.0f, 0.0f, 1.0f,
+                            1.0f, 1.0f, 0.0f, 1.0f,
+                            1.0f, 1.0f, 0.0f, 1.0f,
+                            1.0f, 1.0f, 0.0f, 1.0f,
+
+                            // Top face (cyan)
+                            0.0f, 1.0f, 1.0f, 1.0f,
+                            0.0f, 1.0f, 1.0f, 1.0f,
+                            0.0f, 1.0f, 1.0f, 1.0f,
+                            0.0f, 1.0f, 1.0f, 1.0f,
+                            0.0f, 1.0f, 1.0f, 1.0f,
+                            0.0f, 1.0f, 1.0f, 1.0f,
+
+                            // Bottom face (magenta)
+                            1.0f, 0.0f, 1.0f, 1.0f,
+                            1.0f, 0.0f, 1.0f, 1.0f,
+                            1.0f, 0.0f, 1.0f, 1.0f,
+                            1.0f, 0.0f, 1.0f, 1.0f,
+                            1.0f, 0.0f, 1.0f, 1.0f,
+                            1.0f, 0.0f, 1.0f, 1.0f
+                    };
+        }
+//            return new float[]{
+//                    0.7f, 0.7f, 0.7f, 1.f,
+//                    0.7f, 0.7f, 0.7f, 1.f,
+//                    0.7f, 0.7f, 0.7f, 1.f,
+//                    0.7f, 0.7f, 0.7f, 1.f,
+//                    0.7f, 0.7f, 0.7f, 1.f,
+//                    0.7f, 0.7f, 0.7f, 1.f,
+//
+//                    0.7f, 0.7f, 0.7f, 1.f,
+//                    0.7f, 0.7f, 0.7f, 1.f,
+//                    0.7f, 0.7f, 0.7f, 1.f,
+//                    0.7f, 0.7f, 0.7f, 1.f,
+//                    0.7f, 0.7f, 0.7f, 1.f,
+//                    0.7f, 0.7f, 0.7f, 1.f,
+//
+//                    0.5f, 0.0f, 0.5f, 1.f,
+//                    0.5f, 0.0f, 0.5f, 1.f,
+//                    0.5f, 0.0f, 0.5f, 1.f,
+//                    0.5f, 0.0f, 0.5f, 1.f,
+//                    0.5f, 0.0f, 0.5f, 1.f,
+//                    0.5f, 0.0f, 0.5f, 1.f,
+//
+//                    0.5f, 0.5f, 0.0f, 1.f,
+//                    0.5f, 0.5f, 0.0f, 1.f,
+//                    0.5f, 0.5f, 0.0f, 1.f,
+//                    0.5f, 0.5f, 0.0f, 1.f,
+//                    0.5f, 0.5f, 0.0f, 1.f,
+//                    0.5f, 0.5f, 0.0f, 1.f,
+//
+//                    0.7f, 0.7f, 0.7f, 1.f,
+//                    0.7f, 0.7f, 0.7f, 1.f,
+//                    0.7f, 0.7f, 0.7f, 1.f,
+//                    0.7f, 0.7f, 0.7f, 1.f,
+//                    0.7f, 0.7f, 0.7f, 1.f,
+//                    0.7f, 0.7f, 0.7f, 1.f,
+//
+//                    0.7f, 0.7f, 0.7f, 1.f,
+//                    0.7f, 0.7f, 0.7f, 1.f,
+//                    0.7f, 0.7f, 0.7f, 1.f,
+//                    0.7f, 0.7f, 0.7f, 1.f,
+//                    0.7f, 0.7f, 0.7f, 1.f,
+//                    0.7f, 0.7f, 0.7f, 1.f,
+//            };
     }
 
     private NodeViewProjection getPointParalePerp(NodeViewModel point, float kParale, float bParalel, float kPerp, float bPerp) {

@@ -27,7 +27,7 @@ public class MapGLView extends GLSurfaceView {
         glRendererMap = new GLRendererMap(renderConfig);
         setRenderer(glRendererMap);
 
-        setRenderMode(RENDERMODE_WHEN_DIRTY);
+//        setRenderMode(RENDERMODE_WHEN_DIRTY);
     }
 
     private final float TOUCH_SCALE_FACTOR = 180.0f / 320;

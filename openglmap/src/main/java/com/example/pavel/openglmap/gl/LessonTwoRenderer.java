@@ -515,11 +515,11 @@ public class LessonTwoRenderer implements GLSurfaceView.Renderer
 			GLES20.glEnableVertexAttribArray(mColorHandle);
 
 			// Pass in the normal information
-//			mCubeNormals.position(0);
-//			GLES20.glVertexAttribPointer(mNormalHandle, mNormalDataSize, GLES20.GL_FLOAT, false,
-//					0, mCubeNormals);
+			mCubeNormals.position(0);
+			GLES20.glVertexAttribPointer(mNormalHandle, mNormalDataSize, GLES20.GL_FLOAT, false,
+					0, mCubeNormals);
 
-//			GLES20.glEnableVertexAttribArray(mNormalHandle);
+			GLES20.glEnableVertexAttribArray(mNormalHandle);
 
 			// This multiplies the view matrix by the model matrix, and stores the result in the MVP matrix
 			// (which currently contains model * view).

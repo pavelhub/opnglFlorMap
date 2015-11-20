@@ -33,6 +33,14 @@ public class WallViewModel {
 
         return wallFunction.getDrawOrder(true);
     }
+    public float[] getWallColor2D() {
+
+        return wallFunction.getColor(false);
+    }
+    public float[] getWallColor3D() {
+
+        return wallFunction.getColor(true);
+    }
 //
 //    private WallViewModel(WallModel wallModel) {
 //        nodeViewModelStart = new NodeViewModel(wallModel.getNodeModels().get(0));

@@ -1,6 +1,8 @@
 package com.example.pavel.openglmap.gl.view.overlay;
 
+import com.example.pavel.openglmap.gl.model.GeneralOpenGLDrawing;
 import com.example.pavel.openglmap.gl.model.MyGeneralOpenGLES2DrawingClass;
+import com.example.pavel.openglmap.gl.model.MyGeneralOpenGLES2DrawingClass3d;
 import com.example.pavel.openglmap.gl.view.model.WallViewModel;
 import com.example.pavel.openglmap.gl.view.model.function.WallLinearFunction;
 import com.example.pavel.openglmap.net.model.FloorModel;
@@ -14,8 +16,8 @@ import java.util.List;
  */
 public class FloorWallsOverlay extends BaseOverlay {
 
-    public List<MyGeneralOpenGLES2DrawingClass> wallsModelGl = new ArrayList<>();
-    public List<MyGeneralOpenGLES2DrawingClass> triangleDraw = new ArrayList<>();
+    public List<GeneralOpenGLDrawing> wallsModelGl = new ArrayList<>();
+    public List<GeneralOpenGLDrawing> triangleDraw = new ArrayList<>();
 
     public FloorWallsOverlay(FloorModel floorModel, boolean is3d) {
         List<WallViewModel> wallViewModels = new ArrayList<>();
@@ -31,42 +33,68 @@ public class FloorWallsOverlay extends BaseOverlay {
                 builder.setWallFunction(wallLinearFunction);
                 wallViewModels.add(builder.build());
             }
-//            break;
+            break;
         }
         for (WallViewModel wallViewModel : wallViewModels) {
+
             float[] nodes;
             short[] wallDrawOrder;
+            float[] color;
+            GeneralOpenGLDrawing generalOpenGLDrawing;
             if (is3d) {
                 nodes = wallViewModel.getWallNodes3D();
                 wallDrawOrder = wallViewModel.getWallDrawOrder3D();
+                color = wallViewModel.getWallColor3D();
+                generalOpenGLDrawing = new MyGeneralOpenGLES2DrawingClass3d(3,
+                        nodes,
+                        //                    new float[]{-1.250f, 1.0f, 0.0f,
+                        //                            -1.250f, -0.5f, 0.0f,
+                        //                            -0.75f, -0.5f, 0.0f,
+                        //                            -0.75f, 1.f, 0.0f},
+                        color,//new float[]{0.7f, 0.7f, 0.7f, 1.0f},
+                        //                    new short[]{0, 1, 2, 0, 2, 3}
+                        wallDrawOrder);
+
             } else {
                 nodes = wallViewModel.getWallNodes2D();
                 wallDrawOrder = wallViewModel.getWallDrawOrder2D();
+                color = wallViewModel.getWallColor2D();
+                generalOpenGLDrawing = new MyGeneralOpenGLES2DrawingClass(3,
+                        nodes,
+                        //                    new float[]{-1.250f, 1.0f, 0.0f,
+                        //                            -1.250f, -0.5f, 0.0f,
+                        //                            -0.75f, -0.5f, 0.0f,
+                        //                            -0.75f, 1.f, 0.0f},
+                        color,//new float[]{0.7f, 0.7f, 0.7f, 1.0f},
+                        //                    new short[]{0, 1, 2, 0, 2, 3}
+                        wallDrawOrder);
+
             }
-            MyGeneralOpenGLES2DrawingClass object = new MyGeneralOpenGLES2DrawingClass(3,
-                    nodes,
-                    //                    new float[]{-1.250f, 1.0f, 0.0f,
-                    //                            -1.250f, -0.5f, 0.0f,
-                    //                            -0.75f, -0.5f, 0.0f,
-                    //                            -0.75f, 1.f, 0.0f},
-                    new float[]{0.7f, 0.7f, 0.7f, 1.0f},
-                    //                    new short[]{0, 1, 2, 0, 2, 3}
-                    wallDrawOrder
-            );
-            wallsModelGl.add(object);
+            wallsModelGl.add(generalOpenGLDrawing);
+
         }
 
     }
 
 
+    public void draw(float[] vMatrix, float[] mMatrix, float[] pMatrix, float[] mvpMatrix) {
+
+        for (GeneralOpenGLDrawing model : wallsModelGl) {
+            if (model instanceof MyGeneralOpenGLES2DrawingClass3d) {
+                model.draw(vMatrix, mMatrix, pMatrix);
+            } else {
+
+                model.draw(mvpMatrix);
+            }
+
+        }
+        for (GeneralOpenGLDrawing model : triangleDraw) {
+            model.draw(mvpMatrix);
+        }
+    }
+
+    @Override
     public void draw(float[] mvpMatrix) {
 
-        for (MyGeneralOpenGLES2DrawingClass model : wallsModelGl) {
-            model.draw(mvpMatrix);
-        }
-        for (MyGeneralOpenGLES2DrawingClass model : triangleDraw) {
-            model.draw(mvpMatrix);
-        }
     }
-
 }
