@@ -59,13 +59,7 @@ public class Wall {
 
     }
 
-    public static float sqrt(float f) {
-        final float xhalf = f * 0.5F;
-        float y = Float.intBitsToFloat(0x5f375a86 - (Float.floatToIntBits(f) >> 1)); // evil floating point bit level hacking -- Use 0x5f375a86 instead of 0x5f3759df, due to slight accuracy increase. (Credit to Chris Lomont)
-        y = y * (1.5F - (xhalf * y * y));    // Newton step, repeating increases accuracy
-        y = y * (1.5F - (xhalf * y * y));
-        return f * y;
-    }
+
 
     private Point getPointParalePerp(Point point, float kParale, float bParalel, float kPerp, float bPerp) {
         Point pointPerp = new Point();

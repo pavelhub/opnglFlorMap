@@ -6,10 +6,27 @@ package com.example.pavel.openglmap.gl.view.model;
 public class NodeViewProjection {
     float x;
     float y;
-    float z;
 
-    public float[] getPointMas() {
+    public float[] getPointMas(float z) {
         return new float[]{x, y, z};
+    }
+
+    public void setX(float x) {
+        this.x = x;
+    }
+
+    public void setY(float y) {
+        this.y = y;
+    }
+
+
+
+    public float getX() {
+        return x;
+    }
+
+    public float getY() {
+        return y;
     }
 
 }

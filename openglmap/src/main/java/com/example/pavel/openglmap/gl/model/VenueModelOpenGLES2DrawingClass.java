@@ -217,7 +217,7 @@ public class VenueModelOpenGLES2DrawingClass {
     public void draw(float[] mvpMatrix) {
 //        for (MyGeneralOpenGLES2DrawingClass item : triangleDraw)
 //            item.draw(mvpMatrix);
-//        for (MyGeneralOpenGLES2DrawingClass item : wallsModel)
+//        for (MyGeneralOpenGLES2DrawingClass item : wallsModelGl)
 //            item.draw(mvpMatrix);
 
     }

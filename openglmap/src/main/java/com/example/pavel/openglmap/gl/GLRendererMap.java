@@ -5,7 +5,8 @@ import android.opengl.GLSurfaceView;
 import android.opengl.Matrix;
 import android.util.Log;
 
-import com.example.pavel.openglmap.gl.model.VenueModelOpenGLES2DrawingClass;
+import com.example.pavel.openglmap.gl.model.MyGeneralOpenGLES2DrawingClass;
+import com.example.pavel.openglmap.gl.view.overlay.FloorWallsOverlay;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
@@ -14,8 +15,20 @@ import javax.microedition.khronos.opengles.GL10;
  * Created by Pavel on 06.11.2015.
  */
 public class GLRendererMap implements GLSurfaceView.Renderer {
+    FloorWallsOverlay floorWallsOverlay;
+    RenderConfig renderConfig;
+    // mMVPMatrix is an abbreviation for "Model View Projection Matrix"
+    private final float[] mMVPMatrix = new float[16];
+    private final float[] mProjectionMatrix = new float[16];
+    private final float[] mViewMatrix = new float[16];
+    private float[] mRotationMatrix = new float[16];
 
-    VenueModelOpenGLES2DrawingClass venueModelOpenGLES2DrawingClass;
+    public GLRendererMap(RenderConfig renderConfig) {
+        this.renderConfig = renderConfig;
+//        floorWallsOverlay = new FloorWallsOverlay(floorModel);
+    }
+
+    MyGeneralOpenGLES2DrawingClass textShape;
 
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {
@@ -28,16 +41,17 @@ public class GLRendererMap implements GLSurfaceView.Renderer {
 // Accept fragment if it closer to the camera than the former one
         GLES20.glDepthFunc(GLES20.GL_LESS);
 
-        Matrix.setLookAtM(mViewMatrix, 0, 0, -2, 4, 0f, 0f, 0f, 0f, 1.0f, 0.0f);
-
+        floorWallsOverlay = new FloorWallsOverlay(renderConfig.floorModel, renderConfig.is3DModel);
+//        textShape = new MyGeneralOpenGLES2DrawingClass(3,
+//                new float[]{1.250f, 1.0f, 0.0f,
+//                        1.250f, -0.5f, 0.0f,
+//                        0.75f, -0.5f, 0.0f,
+//                        0.75f, 1.f, 0.0f},
+//                new float[]{1.5f, 0.5f, 0.5f, 1.0f},
+//                new short[]{0, 1, 2, 0, 2, 3});
 
     }
 
-    // mMVPMatrix is an abbreviation for "Model View Projection Matrix"
-    private final float[] mMVPMatrix = new float[16];
-    private final float[] mProjectionMatrix = new float[16];
-    private final float[] mViewMatrix = new float[16];
-    private float[] mRotationMatrix = new float[16];
 
     @Override
     public void onSurfaceChanged(GL10 gl, int width, int height) {
@@ -47,7 +61,7 @@ public class GLRendererMap implements GLSurfaceView.Renderer {
 
         // this projection matrix is applied to object coordinates
         // in the onDrawFrame() method
-        Matrix.frustumM(mProjectionMatrix, 0, -ratio, ratio, -1, 1, 3, 7);
+        Matrix.frustumM(mProjectionMatrix, 0, -ratio, ratio, -1, 1, 3, 10);
 
     }
 
@@ -58,7 +72,12 @@ public class GLRendererMap implements GLSurfaceView.Renderer {
         float[] scratch = new float[16];
 
         GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT | GLES20.GL_DEPTH_BUFFER_BIT);
+        if (renderConfig.is3DModel) {
+            Matrix.setLookAtM(mViewMatrix, 0, 0, -2, 6, 0f, 0f, 0f, 0f, 1.0f, 0.0f);
+        } else {
 
+            Matrix.setLookAtM(mViewMatrix, 0, 0, 0, 6, 0f, 0f, 0f, 0f, 1.0f, 0.0f);
+        }
         // Calculate the projection and view transformation
         Matrix.multiplyMM(mMVPMatrix, 0, mProjectionMatrix, 0, mViewMatrix, 0);
 
@@ -70,8 +89,8 @@ public class GLRendererMap implements GLSurfaceView.Renderer {
         // for the matrix multiplication product to be correct.
         Matrix.multiplyMM(scratch, 0, mMVPMatrix, 0, mRotationMatrix, 0);
 
+        floorWallsOverlay.draw(scratch);
 
-        venueModelOpenGLES2DrawingClass.draw(scratch);
 
     }
 

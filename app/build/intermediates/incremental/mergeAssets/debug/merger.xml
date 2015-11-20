@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="/Users/pavel/PROJECTS/test/opnglFlorMap/app/src/main/assets"/></dataSet><dataSet config="debug"><source path="/Users/pavel/PROJECTS/test/opnglFlorMap/app/src/debug/assets"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="C:\WORK\PROJECTS\mall_app\modules\openglFloorMap\app\src\main\assets"/></dataSet><dataSet config="debug"><source path="C:\WORK\PROJECTS\mall_app\modules\openglFloorMap\app\src\debug\assets"/></dataSet></merger>

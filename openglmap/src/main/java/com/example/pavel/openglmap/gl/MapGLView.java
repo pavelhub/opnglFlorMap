@@ -14,20 +14,20 @@ public class MapGLView extends GLSurfaceView {
 
     public MapGLView(Context context) {
         super(context);
-        initViewContext();
+
     }
 
     public MapGLView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        initViewContext();
+
     }
 
-    private void initViewContext() {
+    public void initViewRender(RenderConfig renderConfig) {
         setEGLContextClientVersion(2);
-        glRendererMap = new GLRendererMap();
+        glRendererMap = new GLRendererMap(renderConfig);
         setRenderer(glRendererMap);
 
-//        setRenderMode(RENDERMODE_WHEN_DIRTY);
+        setRenderMode(RENDERMODE_WHEN_DIRTY);
     }
 
     private final float TOUCH_SCALE_FACTOR = 180.0f / 320;
@@ -59,8 +59,8 @@ public class MapGLView extends GLSurfaceView {
                     dy = dy * -1;
                 }
 
-                glRendererMap.setmAngle(
-                        glRendererMap.getmAngle() -
+                glRendererMap.setAngle(
+                        glRendererMap.getAngle() -
                                 ((dx + dy) * TOUCH_SCALE_FACTOR));  // = 180.0f / 320
                 requestRender();
         }

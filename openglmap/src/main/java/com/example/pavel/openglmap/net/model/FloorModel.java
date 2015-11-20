@@ -13,15 +13,7 @@ public class FloorModel {
     float width;
     float height;
     List<WallModel> walls;
-    List<NodeModel> nodeModels;
 
-    public List<NodeModel> getNodeModels() {
-        return nodeModels;
-    }
-
-    public void setNodeModels(List<NodeModel> nodeModels) {
-        this.nodeModels = nodeModels;
-    }
 
     public int getFloor_id() {
         return floor_id;

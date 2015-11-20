@@ -1,5 +1,7 @@
 package com.example.pavel.openglmap.net.model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 /**
@@ -7,6 +9,7 @@ import java.util.List;
  */
 public class WallModel {
     String type;
+    @SerializedName("points")
     List<NodeModel> nodeModels;
     float depth;
 

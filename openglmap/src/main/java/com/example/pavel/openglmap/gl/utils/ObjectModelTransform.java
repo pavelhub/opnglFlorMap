@@ -13,13 +13,14 @@ public class ObjectModelTransform {
         VenueModel normalizeModel = venueModel;
 
         for (FloorModel floorModel : venueModel.getFloors()) {
-            for (NodeModel nodeModel : floorModel.getNodeModels()) {
-                normalizeNode(floorModel, nodeModel);
-            }
+
 
             for (WallModel wall : floorModel.getWalls()) {
                 if (wall.getType().equals("linear")) {
                     wall.setDepth(normalizeDepth(wall.getDepth(), Math.max(floorModel.getWidth(), floorModel.getHeight())));
+                }
+                for (NodeModel nodeModel : wall.getNodeModels()) {
+                    normalizeNode(floorModel, nodeModel);
                 }
             }
         }
