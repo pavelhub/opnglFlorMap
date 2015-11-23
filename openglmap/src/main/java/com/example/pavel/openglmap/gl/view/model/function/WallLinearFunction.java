@@ -66,47 +66,73 @@ public class WallLinearFunction {
     }
 
     public float[] getCoordinatesModel(boolean is3d) {
-        float[] coordinates = new float[4 * 3 * (is3d ? 2 : 1)];
+        float[] coordinates = new float[4 * 3 * (is3d ? 3 : 1)];
         int arrayPosition = 0;
         //0
-        float[] pointMas = start.getLeft().getPointMas(0f);
+        float z = 0;
+        NodeViewProjection rightStart = start.getRight();
+        NodeViewProjection rightEnd = end.getRight();
+        NodeViewProjection leftEnd = end.getLeft();
+        NodeViewProjection leftStart = start.getLeft();
+        if (start.getY() > end.getY() ) {
+            rightStart = start.getRight();
+            rightEnd = end.getRight();
+            leftEnd = end.getLeft();
+            leftStart = start.getLeft();
+        }
+
+        float[] pointMas = rightStart.getPointMas(z);
         System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
         arrayPosition += pointMas.length;
 //1
 
-
-        pointMas = end.getLeft().getPointMas(0f);
+        pointMas = rightEnd.getPointMas(z);
         System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
         arrayPosition += pointMas.length;
 //2
-        pointMas = end.getRight().getPointMas(0f);
+
+        pointMas = leftEnd.getPointMas(z);
         System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
         arrayPosition += pointMas.length;
 //3
-        pointMas = start.getRight().getPointMas(0f);
+
+        pointMas = leftStart.getPointMas(z);
         System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
         arrayPosition += pointMas.length;
-
 
         if (is3d) {
-            //4
-            pointMas = start.getLeft().getPointMas(-1f);
+            pointMas = rightStart.getPointMas(z);
+            System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
+            arrayPosition += pointMas.length;
+
+            pointMas = leftEnd.getPointMas(z);
+            System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
+            arrayPosition += pointMas.length;
+
+            z = -1;
+            pointMas = rightStart.getPointMas(z);
             System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
             arrayPosition += pointMas.length;
 //1
-            pointMas = end.getLeft().getPointMas(-1f);
+            pointMas = rightEnd.getPointMas(z);
             System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
             arrayPosition += pointMas.length;
 //2
-            pointMas = end.getRight().getPointMas(-1f);
+            pointMas = leftEnd.getPointMas(z);
             System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
             arrayPosition += pointMas.length;
 //3
-            pointMas = start.getRight().getPointMas(-1f);
+            pointMas = leftStart.getPointMas(z);
             System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
             arrayPosition += pointMas.length;
 
+            pointMas = rightStart.getPointMas(z);
+            System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
+            arrayPosition += pointMas.length;
 
+            pointMas = leftEnd.getPointMas(z);
+            System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
+            arrayPosition += pointMas.length;
 
         }
 

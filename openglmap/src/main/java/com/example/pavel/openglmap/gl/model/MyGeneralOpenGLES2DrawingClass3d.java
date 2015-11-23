@@ -356,8 +356,8 @@ public class MyGeneralOpenGLES2DrawingClass3d extends GeneralOpenGLDrawing {
 
         // Draw the cube.
 //			GLES20.glDrawArrays(GLES20.GL_TRIANGLES, 0, 36);
-        GLES20.glDrawElements(GLES20.GL_TRIANGLE_STRIP, 36, GLES20.GL_UNSIGNED_SHORT, drawListBuffer);
-//        GLES20.glDrawArrays(GLES20.GL_TRIANGLES, 0, 36);
+//        GLES20.glDrawElements(GLES20.GL_TRIANGLE_STRIP, 36, GLES20.GL_UNSIGNED_SHORT, drawListBuffer);
+        GLES20.glDrawArrays(GLES20.GL_TRIANGLES, 0, 36);
         // Disable vertex array
 //        GLES20.glDisableVertexAttribArray(mPositionHandle);
     }

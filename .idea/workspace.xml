@@ -41,27 +41,7 @@
         <entry file="file://$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/gl/model/MyGeneralOpenGLES2DrawingClass3d.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="360" column="31" selection-start-line="360" selection-start-column="31" selection-end-line="360" selection-end-column="31" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <caret line="359" column="31" selection-start-line="359" selection-start-column="31" selection-end-line="359" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -77,13 +57,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WallLinearFunction.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="WallLinearFunction.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/gl/view/model/function/WallLinearFunction.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="162" column="42" selection-start-line="162" selection-start-column="42" selection-end-line="162" selection-end-column="42" />
+            <state vertical-scroll-proportion="0.2">
+              <caret line="76" column="20" selection-start-line="76" selection-start-column="20" selection-end-line="76" selection-end-column="20" />
               <folding>
-                <marker date="1448242129000" expanded="true" signature="6848:7972" placeholder="..." />
+                <marker date="1448268783000" expanded="true" signature="7978:9102" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -2116,8 +2096,8 @@
         <option value="$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/gl/LessonTwoRenderer.java" />
         <option value="$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/gl/MapGLView.java" />
         <option value="$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/gl/GLRendererMap.java" />
-        <option value="$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/gl/view/model/function/WallLinearFunction.java" />
         <option value="$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/gl/model/MyGeneralOpenGLES2DrawingClass3d.java" />
+        <option value="$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/gl/view/model/function/WallLinearFunction.java" />
       </list>
     </option>
   </component>
@@ -2384,7 +2364,7 @@
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
       <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
       <option name="FORCE_STOP_RUNNING_APP" value="true" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="true" />
       <option name="PREFERRED_AVD" value="" />
       <option name="DEEP_LINK" value="" />
       <option name="ACTIVITY_CLASS" value="" />
@@ -2461,7 +2441,15 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/gl/view/model/function/WallLinearFunction.java</url>
+          <line>76</line>
+          <properties />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="2" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -2533,28 +2521,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/gl/view/model/function/WallLinearFunction.java">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="162" column="42" selection-start-line="162" selection-start-column="42" selection-end-line="162" selection-end-column="42" />
-          <folding>
-            <marker date="1448242129000" expanded="true" signature="6848:7972" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/gl/model/MyGeneralOpenGLES2DrawingClass.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="205" column="46" selection-start-line="205" selection-start-column="46" selection-end-line="205" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/gl/model/MyGeneralOpenGLES2DrawingClass3d.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="360" column="31" selection-start-line="360" selection-start-column="31" selection-end-line="360" selection-end-column="31" />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -2567,11 +2537,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/gl/model/MyGeneralOpenGLES2DrawingClass3d.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="359" column="31" selection-start-line="359" selection-start-column="31" selection-end-line="359" selection-end-column="31" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/gl/model/MyGeneralOpenGLES2DrawingClass.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="205" column="46" selection-start-line="205" selection-start-column="46" selection-end-line="205" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/gl/view/model/function/WallLinearFunction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2">
+          <caret line="76" column="20" selection-start-line="76" selection-start-column="20" selection-end-line="76" selection-end-column="20" />
+          <folding>
+            <marker date="1448268783000" expanded="true" signature="7978:9102" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
