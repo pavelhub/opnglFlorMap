@@ -34,10 +34,10 @@ public class GLRendererMap implements GLSurfaceView.Renderer {
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {
         // Set the background clear color to black.
-        GLES20.glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+        GLES20.glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
         // Use culling to remove back faces.
-        if(renderConfig.is3DModel) {
+        if (renderConfig.is3DModel) {
             GLES20.glEnable(GLES20.GL_CULL_FACE);
         }
         // Enable depth testing
@@ -63,7 +63,7 @@ public class GLRendererMap implements GLSurfaceView.Renderer {
         // view matrix. In OpenGL 2, we can keep track of these matrices separately if we choose.
         Matrix.setLookAtM(mViewMatrix, 0, eyeX, eyeY, eyeZ, lookX, lookY, lookZ, upX, upY, upZ);
 
-        floorWallsOverlay = new FloorWallsOverlay(renderConfig.floorModel, renderConfig.is3DModel);
+        floorWallsOverlay = new FloorWallsOverlay(renderConfig.floorModel, true);
 //        textShape = new MyGeneralOpenGLES2DrawingClass(3,
 //                new float[]{1.250f, 1.0f, 0.0f,
 //                        1.250f, -0.5f, 0.0f,
@@ -89,13 +89,16 @@ public class GLRendererMap implements GLSurfaceView.Renderer {
         final float top = 1.0f;
         final float near = 1.0f;
         final float far = 10.0f;
-
-        Matrix.frustumM(mProjectionMatrix, 0, left, right, bottom, top, near, far);
+        if (renderConfig.is3DModel)
+            Matrix.frustumM(mProjectionMatrix, 0, left, right, bottom, top, near, far);
+        else
+            Matrix.orthoM(mProjectionMatrix, 0, left, right, bottom, top, near, far);
 
     }
 
     private float mAngle;
     private float[] mModelMatrix = new float[16];
+
     @Override
     public void onDrawFrame(GL10 gl) {
         float[] scratch = new float[16];

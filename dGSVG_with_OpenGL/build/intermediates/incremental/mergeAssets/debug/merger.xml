@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="C:\WORK\PROJECTS\mall_app\modules\openglFloorMap\dGSVG_with_OpenGL\src\main\assets"><file name="box.svg" path="C:\WORK\PROJECTS\mall_app\modules\openglFloorMap\dGSVG_with_OpenGL\src\main\assets\box.svg"/></source></dataSet><dataSet config="debug"><source path="C:\WORK\PROJECTS\mall_app\modules\openglFloorMap\dGSVG_with_OpenGL\src\debug\assets"/></dataSet></merger>

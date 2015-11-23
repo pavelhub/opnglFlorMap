@@ -45,9 +45,19 @@ public class WallLinearFunction {
 
         bParalelRight = (float) (halfDepth * Math.sqrt(k * k + 1) + b);
         bParalelLeft = (float) (-halfDepth * Math.sqrt(k * k + 1) + b);
+//        if(k<0) {
+//            bParalelRight = (float) (-halfDepth * Math.sqrt(k * k + 1) + b);
+//            bParalelLeft = (float) (halfDepth * Math.sqrt(k * k + 1) + b);
+//        }
         if (k == 0) {
-            bParalelLeft = b - halfDepth;
-            bParalelRight = b + halfDepth;
+            if (b < 0) {
+                bParalelLeft = b + halfDepth;
+                bParalelRight = b - halfDepth;
+            } else {
+                bParalelLeft = b - halfDepth;
+                bParalelRight = b + halfDepth;
+
+            }
         }
         totalDistance = (float) getDistanceToSegment(start, end);
 
@@ -66,7 +76,7 @@ public class WallLinearFunction {
     }
 
     public float[] getCoordinatesModel(boolean is3d) {
-        float[] coordinates = new float[4 * 3 * (is3d ? 3 : 1)];
+        float[] coordinates = new float[4 * 3 * (is3d ? 9 : 1)];
         int arrayPosition = 0;
         //0
         float z = 0;
@@ -74,12 +84,12 @@ public class WallLinearFunction {
         NodeViewProjection rightEnd = end.getRight();
         NodeViewProjection leftEnd = end.getLeft();
         NodeViewProjection leftStart = start.getLeft();
-        if (start.getY() > end.getY() ) {
-            rightStart = start.getRight();
-            rightEnd = end.getRight();
-            leftEnd = end.getLeft();
-            leftStart = start.getLeft();
-        }
+//        if (start.getY() > end.getY()) {
+//            rightStart = end.getRight();
+//            rightEnd = start.getRight();
+//            leftEnd = start.getLeft();
+//            leftStart = end.getLeft();
+//        }
 
         float[] pointMas = rightStart.getPointMas(z);
         System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
@@ -109,6 +119,7 @@ public class WallLinearFunction {
             System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
             arrayPosition += pointMas.length;
 
+            //down
             z = -1;
             pointMas = rightStart.getPointMas(z);
             System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
@@ -134,6 +145,119 @@ public class WallLinearFunction {
             System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
             arrayPosition += pointMas.length;
 
+            //front
+            z = -1;
+            pointMas = leftEnd.getPointMas(z);
+            System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
+            arrayPosition += pointMas.length;
+
+            pointMas = leftStart.getPointMas(z);
+            System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
+            arrayPosition += pointMas.length;
+//1
+
+            z = 0;
+            pointMas = leftStart.getPointMas(z);
+            System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
+            arrayPosition += pointMas.length;
+
+            pointMas = leftStart.getPointMas(z);
+            System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
+            arrayPosition += pointMas.length;
+
+            pointMas = leftEnd.getPointMas(z);
+            System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
+            arrayPosition += pointMas.length;
+
+            z=-1;
+            pointMas = leftEnd.getPointMas(z);
+            System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
+            arrayPosition += pointMas.length;
+
+            //back
+            z = -1;
+            pointMas = rightStart.getPointMas(z);
+            System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
+            arrayPosition += pointMas.length;
+//1
+            pointMas =rightEnd.getPointMas(z);
+            System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
+            arrayPosition += pointMas.length;
+
+            z = 0;
+            pointMas = rightEnd.getPointMas(z);
+            System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
+            arrayPosition += pointMas.length;
+
+            pointMas = rightEnd.getPointMas(z);
+            System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
+            arrayPosition += pointMas.length;
+
+            pointMas = rightStart.getPointMas(z);
+            System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
+            arrayPosition += pointMas.length;
+
+            z=-1;
+            pointMas = rightStart.getPointMas(z);
+            System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
+            arrayPosition += pointMas.length;
+
+            //left_side
+            z = -1;
+            pointMas = leftStart.getPointMas(z);
+            System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
+            arrayPosition += pointMas.length;
+//1
+            pointMas = rightStart.getPointMas(z);
+            System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
+            arrayPosition += pointMas.length;
+
+            z = 0;
+            pointMas = rightStart.getPointMas(z);
+            System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
+            arrayPosition += pointMas.length;
+
+            pointMas = rightStart.getPointMas(z);
+            System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
+            arrayPosition += pointMas.length;
+
+            pointMas = leftStart.getPointMas(z);
+            System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
+            arrayPosition += pointMas.length;
+
+            z=-1;
+            pointMas = leftStart.getPointMas(z);
+            System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
+            arrayPosition += pointMas.length;
+
+            //right_side
+            z = -1;
+            pointMas = rightEnd.getPointMas(z);
+            System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
+            arrayPosition += pointMas.length;
+
+            pointMas = leftEnd.getPointMas(z);
+            System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
+            arrayPosition += pointMas.length;
+//1
+
+            z = 0;
+            pointMas = leftEnd.getPointMas(z);
+            System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
+            arrayPosition += pointMas.length;
+
+            pointMas = leftEnd.getPointMas(z);
+            System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
+            arrayPosition += pointMas.length;
+
+            pointMas = rightEnd.getPointMas(z);
+            System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
+            arrayPosition += pointMas.length;
+
+            z=-1;
+            pointMas = rightEnd.getPointMas(z);
+            System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
+            arrayPosition += pointMas.length;
         }
 
         return coordinates;
@@ -172,43 +296,11 @@ public class WallLinearFunction {
     public float[] getColor(boolean is3D) {
         if (!is3D)
             return new float[]{
-                    1.0f, 1.0f, 1.0f, 1.f
+                    7.0f, 7.0f, 7.0f, 1.f
             };
         else {
             return new float[]
                     {
-//                            // Front face (red)
-                            1.0f, 0.0f, 0.0f, 1.0f,
-                            1.0f, 0.0f, 0.0f, 1.0f,
-                            1.0f, 0.0f, 0.0f, 1.0f,
-                            1.0f, 0.0f, 0.0f, 1.0f,
-                            1.0f, 0.0f, 0.0f, 1.0f,
-                            1.0f, 0.0f, 0.0f, 1.0f,
-
-                            // Right face (green)
-                            0.0f, 1.0f, 0.0f, 1.0f,
-                            0.0f, 1.0f, 0.0f, 1.0f,
-                            0.0f, 1.0f, 0.0f, 1.0f,
-                            0.0f, 1.0f, 0.0f, 1.0f,
-                            0.0f, 1.0f, 0.0f, 1.0f,
-                            0.0f, 1.0f, 0.0f, 1.0f,
-
-                            // Back face (blue)
-                            0.0f, 0.0f, 1.0f, 1.0f,
-                            0.0f, 0.0f, 1.0f, 1.0f,
-                            0.0f, 0.0f, 1.0f, 1.0f,
-                            0.0f, 0.0f, 1.0f, 1.0f,
-                            0.0f, 0.0f, 1.0f, 1.0f,
-                            0.0f, 0.0f, 1.0f, 1.0f,
-
-                            // Left face (yellow)
-                            1.0f, 1.0f, 0.0f, 1.0f,
-                            1.0f, 1.0f, 0.0f, 1.0f,
-                            1.0f, 1.0f, 0.0f, 1.0f,
-                            1.0f, 1.0f, 0.0f, 1.0f,
-                            1.0f, 1.0f, 0.0f, 1.0f,
-                            1.0f, 1.0f, 0.0f, 1.0f,
-
                             // Top face (cyan)
                             0.0f, 1.0f, 1.0f, 1.0f,
                             0.0f, 1.0f, 1.0f, 1.0f,
@@ -223,7 +315,44 @@ public class WallLinearFunction {
                             1.0f, 0.0f, 1.0f, 1.0f,
                             1.0f, 0.0f, 1.0f, 1.0f,
                             1.0f, 0.0f, 1.0f, 1.0f,
-                            1.0f, 0.0f, 1.0f, 1.0f
+                            1.0f, 0.0f, 1.0f, 1.0f,
+
+//                            // Front face (red)
+                            1.0f, 0.0f, 0.0f, 1.0f,
+                            1.0f, 0.0f, 0.0f, 1.0f,
+                            1.0f, 0.0f, 0.0f, 1.0f,
+                            1.0f, 0.0f, 0.0f, 1.0f,
+                            1.0f, 0.0f, 0.0f, 1.0f,
+                            1.0f, 0.0f, 0.0f, 1.0f,
+
+                            // Back face (blue)
+                            0.0f, 0.0f, 1.0f, 1.0f,
+                            0.0f, 0.0f, 1.0f, 1.0f,
+                            0.0f, 0.0f, 1.0f, 1.0f,
+                            0.0f, 0.0f, 1.0f, 1.0f,
+                            0.0f, 0.0f, 1.0f, 1.0f,
+                            0.0f, 0.0f, 1.0f, 1.0f,
+
+
+                            // Left face (yellow)
+                            1.0f, 1.0f, 0.0f, 1.0f,
+                            1.0f, 1.0f, 0.0f, 1.0f,
+                            1.0f, 1.0f, 0.0f, 1.0f,
+                            1.0f, 1.0f, 0.0f, 1.0f,
+                            1.0f, 1.0f, 0.0f, 1.0f,
+                            1.0f, 1.0f, 0.0f, 1.0f,
+
+                            // Right face (green)
+                            0.0f, 1.0f, 0.0f, 1.0f,
+                            0.0f, 1.0f, 0.0f, 1.0f,
+                            0.0f, 1.0f, 0.0f, 1.0f,
+                            0.0f, 1.0f, 0.0f, 1.0f,
+                            0.0f, 1.0f, 0.0f, 1.0f,
+                            0.0f, 1.0f, 0.0f, 1.0f,
+
+
+
+
                     };
 //        }
 //            return new float[]{
