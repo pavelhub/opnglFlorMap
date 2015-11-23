@@ -309,9 +309,9 @@ public class MyGeneralOpenGLES2DrawingClass3d extends GeneralOpenGLDrawing {
         long time = SystemClock.uptimeMillis() % 10000L;
         float angleInDegrees = (360.0f / 10000.0f) * ((int) time);
         Matrix.setIdentityM(mLightModelMatrix, 0);
-        Matrix.translateM(mLightModelMatrix, 0, 0.0f, 0.0f, -5.0f);
+        Matrix.translateM(mLightModelMatrix, 0, 0.0f, 0.0f, 1.0f);
         Matrix.rotateM(mLightModelMatrix, 0, angleInDegrees, 0.0f, 1.0f, 0.0f);
-        Matrix.translateM(mLightModelMatrix, 0, 0.0f, 0.0f, 2.0f);
+//        Matrix.translateM(mLightModelMatrix, 0, 0.0f, 0.0f, .50f);
 
         Matrix.multiplyMV(mLightPosInWorldSpace, 0, mLightModelMatrix, 0, mLightPosInModelSpace, 0);
         Matrix.multiplyMV(mLightPosInEyeSpace, 0, vMatrix, 0, mLightPosInWorldSpace, 0);
@@ -357,6 +357,7 @@ public class MyGeneralOpenGLES2DrawingClass3d extends GeneralOpenGLDrawing {
         // Draw the cube.
 //			GLES20.glDrawArrays(GLES20.GL_TRIANGLES, 0, 36);
         GLES20.glDrawElements(GLES20.GL_TRIANGLE_STRIP, 36, GLES20.GL_UNSIGNED_SHORT, drawListBuffer);
+//        GLES20.glDrawArrays(GLES20.GL_TRIANGLES, 0, 36);
         // Disable vertex array
 //        GLES20.glDisableVertexAttribArray(mPositionHandle);
     }

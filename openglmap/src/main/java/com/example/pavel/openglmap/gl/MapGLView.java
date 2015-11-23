@@ -11,6 +11,7 @@ import android.view.MotionEvent;
  */
 public class MapGLView extends GLSurfaceView {
     GLRendererMap glRendererMap;
+    LessonTwoRenderer lessonTwoRenderer;
 
     public MapGLView(Context context) {
         super(context);
@@ -26,7 +27,8 @@ public class MapGLView extends GLSurfaceView {
         setEGLContextClientVersion(2);
         glRendererMap = new GLRendererMap(renderConfig);
         setRenderer(glRendererMap);
-
+//        lessonTwoRenderer = new LessonTwoRenderer(renderConfig.floorModel);
+//        setRenderer(lessonTwoRenderer);
 //        setRenderMode(RENDERMODE_WHEN_DIRTY);
     }
 
@@ -58,10 +60,11 @@ public class MapGLView extends GLSurfaceView {
                 if (x < getWidth() / 2) {
                     dy = dy * -1;
                 }
-
-                glRendererMap.setAngle(
-                        glRendererMap.getAngle() -
-                                ((dx + dy) * TOUCH_SCALE_FACTOR));  // = 180.0f / 320
+                if (glRendererMap != null) {
+                    glRendererMap.setAngle(
+                            glRendererMap.getAngle() -
+                                    ((dx + dy) * TOUCH_SCALE_FACTOR));  // = 180.0f / 320
+                }
                 requestRender();
         }
 

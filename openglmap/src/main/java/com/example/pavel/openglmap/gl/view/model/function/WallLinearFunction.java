@@ -151,7 +151,7 @@ public class WallLinearFunction {
         else {
             return new float[]
                     {
-                            // Front face (red)
+//                            // Front face (red)
                             1.0f, 0.0f, 0.0f, 1.0f,
                             1.0f, 0.0f, 0.0f, 1.0f,
                             1.0f, 0.0f, 0.0f, 1.0f,
@@ -199,31 +199,23 @@ public class WallLinearFunction {
                             1.0f, 0.0f, 1.0f, 1.0f,
                             1.0f, 0.0f, 1.0f, 1.0f
                     };
-        }
+//        }
 //            return new float[]{
-//                    0.7f, 0.7f, 0.7f, 1.f,
-//                    0.7f, 0.7f, 0.7f, 1.f,
-//                    0.7f, 0.7f, 0.7f, 1.f,
-//                    0.7f, 0.7f, 0.7f, 1.f,
-//                    0.7f, 0.7f, 0.7f, 1.f,
-//                    0.7f, 0.7f, 0.7f, 1.f,
+//                    1.0f, 1.0f, 1.0f, 1.f,
+//                    1.0f, 1.0f, 1.0f, 1.f,
+//                    1.0f, 1.0f, 1.0f, 1.f,
+//                    1.0f, 1.0f, 1.0f, 1.f,
 //
-//                    0.7f, 0.7f, 0.7f, 1.f,
-//                    0.7f, 0.7f, 0.7f, 1.f,
-//                    0.7f, 0.7f, 0.7f, 1.f,
-//                    0.7f, 0.7f, 0.7f, 1.f,
-//                    0.7f, 0.7f, 0.7f, 1.f,
-//                    0.7f, 0.7f, 0.7f, 1.f,
+//                    1.0f, 1.0f, 1.0f, 1.f,
+//                    1.0f, 1.0f, 1.0f, 1.f,
+//                    1.0f, 1.0f, 1.0f, 1.f,
+//                    1.0f, 1.0f, 1.0f, 1.f,
 //
-//                    0.5f, 0.0f, 0.5f, 1.f,
-//                    0.5f, 0.0f, 0.5f, 1.f,
-//                    0.5f, 0.0f, 0.5f, 1.f,
-//                    0.5f, 0.0f, 0.5f, 1.f,
-//                    0.5f, 0.0f, 0.5f, 1.f,
-//                    0.5f, 0.0f, 0.5f, 1.f,
+//                    1.0f, 1.0f, 1.0f, 1.f,
+//                    1.0f, 1.0f, 1.0f, 1.f,
+//                    1.0f, 1.0f, 1.0f, 1.f,
+//                    1.0f, 1.0f, 1.0f, 1.f,
 //
-//                    0.5f, 0.5f, 0.0f, 1.f,
-//                    0.5f, 0.5f, 0.0f, 1.f,
 //                    0.5f, 0.5f, 0.0f, 1.f,
 //                    0.5f, 0.5f, 0.0f, 1.f,
 //                    0.5f, 0.5f, 0.0f, 1.f,
@@ -233,16 +225,13 @@ public class WallLinearFunction {
 //                    0.7f, 0.7f, 0.7f, 1.f,
 //                    0.7f, 0.7f, 0.7f, 1.f,
 //                    0.7f, 0.7f, 0.7f, 1.f,
-//                    0.7f, 0.7f, 0.7f, 1.f,
-//                    0.7f, 0.7f, 0.7f, 1.f,
 //
-//                    0.7f, 0.7f, 0.7f, 1.f,
-//                    0.7f, 0.7f, 0.7f, 1.f,
 //                    0.7f, 0.7f, 0.7f, 1.f,
 //                    0.7f, 0.7f, 0.7f, 1.f,
 //                    0.7f, 0.7f, 0.7f, 1.f,
 //                    0.7f, 0.7f, 0.7f, 1.f,
 //            };
+        }
     }
 
     private NodeViewProjection getPointParalePerp(NodeViewModel point, float kParale, float bParalel, float kPerp, float bPerp) {
