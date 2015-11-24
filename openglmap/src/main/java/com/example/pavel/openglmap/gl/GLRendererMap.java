@@ -8,6 +8,7 @@ import android.util.Log;
 
 import com.example.pavel.openglmap.gl.model.MyGeneralOpenGLES2DrawingClass;
 import com.example.pavel.openglmap.gl.view.overlay.FloorWallsOverlay;
+import com.example.pavel.openglmap.gl.view.overlay.SceneOverlay;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
@@ -17,6 +18,7 @@ import javax.microedition.khronos.opengles.GL10;
  */
 public class GLRendererMap implements GLSurfaceView.Renderer {
     FloorWallsOverlay floorWallsOverlay;
+    SceneOverlay sceneOverlay;
     RenderConfig renderConfig;
     // mMVPMatrix is an abbreviation for "Model View Projection Matrix"
     private final float[] mMVPMatrix = new float[16];
@@ -45,8 +47,8 @@ public class GLRendererMap implements GLSurfaceView.Renderer {
 
         // Position the eye in front of the origin.
         final float eyeX = 0.0f;
-        final float eyeY = -2.0f;
-        final float eyeZ = 2.0f;
+        final float eyeY = -0.2f;
+        final float eyeZ = 1.5f;
 
         // We are looking toward the distance
         final float lookX = 0.0f;
@@ -63,7 +65,8 @@ public class GLRendererMap implements GLSurfaceView.Renderer {
         // view matrix. In OpenGL 2, we can keep track of these matrices separately if we choose.
         Matrix.setLookAtM(mViewMatrix, 0, eyeX, eyeY, eyeZ, lookX, lookY, lookZ, upX, upY, upZ);
 
-        floorWallsOverlay = new FloorWallsOverlay(renderConfig.floorModel, true);
+        floorWallsOverlay = new FloorWallsOverlay(renderConfig.floorModel, renderConfig.is3DModel);
+        sceneOverlay = new SceneOverlay(renderConfig.floorModel);
 //        textShape = new MyGeneralOpenGLES2DrawingClass(3,
 //                new float[]{1.250f, 1.0f, 0.0f,
 //                        1.250f, -0.5f, 0.0f,
@@ -89,10 +92,10 @@ public class GLRendererMap implements GLSurfaceView.Renderer {
         final float top = 1.0f;
         final float near = 1.0f;
         final float far = 10.0f;
-        if (renderConfig.is3DModel)
+//        if (renderConfig.is3DModel)
             Matrix.frustumM(mProjectionMatrix, 0, left, right, bottom, top, near, far);
-        else
-            Matrix.orthoM(mProjectionMatrix, 0, left, right, bottom, top, near, far);
+//        else
+//            Matrix.orthoM(mProjectionMatrix, 0, left, right, bottom, top, near, far);
 
     }
 
@@ -109,10 +112,10 @@ public class GLRendererMap implements GLSurfaceView.Renderer {
 //            Matrix.setLookAtM(mViewMatrix, 0, 0, 0, -0.5f, 0f, 0f, -2.0f, 0f, 1.0f, 0.0f);
         } else {
 
-            Matrix.setLookAtM(mViewMatrix, 0, 0, 0, 3, 0f, 0f, 0f, 0f, 1.0f, 0.0f);
+            Matrix.setLookAtM(mViewMatrix, 0, 0, 0, 2, 0f, 0f, 0f, 0f, 1.0f, 0.0f);
         }
         // Calculate the projection and view transformation
-//        Matrix.multiplyMM(mMVPMatrix, 0, mProjectionMatrix, 0, mViewMatrix, 0);
+        Matrix.multiplyMM(mMVPMatrix, 0, mProjectionMatrix, 0, mViewMatrix, 0);
 
         Matrix.setIdentityM(mRotationMatrix, 0);
         Matrix.translateM(mRotationMatrix, 0, 0.0f, 0.0f, -5.0f);
@@ -121,7 +124,7 @@ public class GLRendererMap implements GLSurfaceView.Renderer {
         // Combine the rotation matrix with the projection and camera view
         // Note that the mMVPMatrix factor *must be first* in order
         // for the matrix multiplication product to be correct.
-//        Matrix.multiplyMM(scratch, 0, mMVPMatrix, 0, mRotationMatrix, 0);
+        Matrix.multiplyMM(scratch, 0, mMVPMatrix, 0, mRotationMatrix, 0);
 
         // Do a complete rotation every 10 seconds.
         long time = SystemClock.uptimeMillis() % 10000L;
@@ -132,7 +135,7 @@ public class GLRendererMap implements GLSurfaceView.Renderer {
         Matrix.rotateM(mModelMatrix, 0, mAngle, .0f, .0f, 1.0f);
 
         floorWallsOverlay.draw(mViewMatrix, mModelMatrix, mProjectionMatrix, scratch);
-
+        sceneOverlay.draw(mMVPMatrix);
 
     }
 

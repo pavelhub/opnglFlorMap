@@ -14,14 +14,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.8/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/2.8/taskArtifacts/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.8/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/2.8/taskArtifacts/fileSnapshots.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.8/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/2.8/taskArtifacts/taskArtifacts.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/gl/view/overlay/FloorWallsOverlay.java" afterPath="$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/gl/view/overlay/FloorWallsOverlay.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/gl/GLRendererMap.java" afterPath="$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/gl/GLRendererMap.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/gl/view/model/NodeViewModel.java" afterPath="$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/gl/view/model/NodeViewModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/TestMap.java" afterPath="$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/TestMap.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/gl/view/model/function/WallLinearFunction.java" afterPath="$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/gl/view/model/function/WallLinearFunction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/gl/view/model/WallViewModel.java" afterPath="$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/gl/view/model/WallViewModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/openglmap/src/main/res/layout/activity_test_map.xml" afterPath="$PROJECT_DIR$/openglmap/src/main/res/layout/activity_test_map.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/openglmap/src/main/assets/model/venue_model" afterPath="$PROJECT_DIR$/openglmap/src/main/assets/model/venue_model" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="opnglFlorMap.iws" />
@@ -55,17 +48,7 @@
         <entry file="file://$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/gl/view/overlay/FloorWallsOverlay.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="39" column="10" selection-start-line="39" selection-start-column="10" selection-end-line="47" selection-end-column="11" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TestMap.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/TestMap.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="62" column="51" selection-start-line="62" selection-start-column="51" selection-end-line="62" selection-end-column="51" />
+              <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -83,6 +66,16 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="GLRendererMap.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/gl/GLRendererMap.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.7285714">
+              <caret line="50" column="30" selection-start-line="50" selection-start-column="30" selection-end-line="50" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="venue_model" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/openglmap/src/main/assets/model/venue_model">
           <provider selected="true" editor-type-id="text-editor">
@@ -93,15 +86,59 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WallLinearFunction.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="WallLinearFunction.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/gl/view/model/function/WallLinearFunction.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3708381">
-              <caret line="21" column="9" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="264" column="35" selection-start-line="264" selection-start-column="35" selection-end-line="264" selection-end-column="35" />
               <folding>
                 <element signature="method#getDrawOrder#0;class#WallLinearFunction#0" expanded="false" />
                 <element signature="method#getColor#0;class#WallLinearFunction#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NodeViewProjection.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/gl/view/model/NodeViewProjection.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-13.851851">
+              <caret line="32" column="37" selection-start-line="32" selection-start-column="37" selection-end-line="32" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SceneOverlay.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/gl/view/overlay/SceneOverlay.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#883#884#0" expanded="true" />
+                <element signature="e#945#946#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GeneralOpenGLDrawing.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/gl/model/GeneralOpenGLDrawing.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-4.4074073">
+              <caret line="7" column="16" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GLRendererMap_test.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/gl/model/GLRendererMap_test.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-18.88889">
+              <caret line="118" column="49" selection-start-line="112" selection-start-column="31" selection-end-line="118" selection-end-column="49" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -117,6 +154,13 @@
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -1246,7 +1290,7 @@
         <entry key="$USER_HOME$/Documents/archi-master" value="8677622916000" />
         <entry key="$USER_HOME$/Downloads/drunken-bear-master" value="4326755070000" />
         <entry key="$USER_HOME$/Downloads/indooratlas-android-sdk-1.4.2-132-beta/example" value="1432712002000" />
-        <entry key="C:\WORK\PROJECTS\mall_app\modules\openglFloorMap" value="4340937869366" />
+        <entry key="C:\WORK\PROJECTS\mall_app\modules\openglFloorMap" value="4341396274521" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -1661,14 +1705,16 @@
         <option value="$PROJECT_DIR$/dGSVG_with_OpenGL/src/main/java/com/dividedgames/svg/Sprite.java" />
         <option value="$PROJECT_DIR$/settings.gradle" />
         <option value="$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/gl/model/MyGeneralOpenGLES2DrawingClass3d.java" />
-        <option value="$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/gl/GLRendererMap.java" />
         <option value="$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/gl/view/model/WallViewModel.java" />
         <option value="$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/gl/view/model/NodeViewModel.java" />
         <option value="$PROJECT_DIR$/openglmap/src/main/res/layout/activity_test_map.xml" />
-        <option value="$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/gl/view/overlay/FloorWallsOverlay.java" />
         <option value="$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/TestMap.java" />
         <option value="$PROJECT_DIR$/openglmap/src/main/assets/model/venue_model" />
+        <option value="$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/gl/view/overlay/FloorWallsOverlay.java" />
+        <option value="$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/gl/view/model/NodeViewProjection.java" />
         <option value="$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/gl/view/model/function/WallLinearFunction.java" />
+        <option value="$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/gl/view/overlay/SceneOverlay.java" />
+        <option value="$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/gl/GLRendererMap.java" />
       </list>
     </option>
   </component>
@@ -1961,8 +2007,42 @@
               <option name="myItemId" value="view" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
+              <option name="myItemId" value="opnglFlorMap" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="openglFloorMap" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="openglmap" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="openglmap" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="utils" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -2000,15 +2080,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="view" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="function" />
+              <option name="myItemId" value="servermodel" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -2374,7 +2446,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32925472" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
@@ -2384,7 +2456,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32925472" sideWeight="0.5021322" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6573971" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.6573971" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32925472" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -2393,7 +2465,7 @@
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
@@ -2456,7 +2528,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/gl/view/model/function/WallLinearFunction.java</url>
-          <line>208</line>
+          <line>228</line>
           <properties />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
@@ -2468,7 +2540,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/gl/view/model/function/WallLinearFunction.java</url>
-          <line>174</line>
+          <line>194</line>
           <properties />
           <option name="timeStamp" value="5" />
         </line-breakpoint>
@@ -2478,38 +2550,18 @@
           <properties />
           <option name="timeStamp" value="6" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/gl/view/model/function/WallLinearFunction.java</url>
+          <line>106</line>
+          <properties />
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="8" />
+      <option name="time" value="9" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/gl/view/overlay/FloorWallsOverlay.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="43" column="18" selection-start-line="43" selection-start-column="18" selection-end-line="43" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/gl/model/MyGeneralOpenGLES2DrawingClass3d.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/gl/view/model/WallViewModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding>
-            <element signature="e#423#424#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/gl/GLRendererMap.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -2633,13 +2685,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="30" column="39" selection-start-line="29" selection-start-column="39" selection-end-line="30" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/gl/model/GeneralOpenGLDrawing.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.19090909">
-          <caret line="7" column="16" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
         </state>
       </provider>
     </entry>
@@ -2783,25 +2828,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-23/java/lang/Object.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33295062">
-          <caret line="203" column="19" selection-start-line="203" selection-start-column="19" selection-end-line="203" selection-end-column="25" />
-          <folding>
-            <element signature="e#8516#8517#0" expanded="false" />
-            <element signature="e#8548#8549#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/gl/GLRendererMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.19517796">
-          <caret line="65" column="44" selection-start-line="65" selection-start-column="44" selection-end-line="65" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/gl/view/model/NodeViewModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -2840,14 +2866,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/gl/view/overlay/FloorWallsOverlay.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="39" column="10" selection-start-line="39" selection-start-column="10" selection-end-line="47" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/TestMap.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -2864,6 +2882,61 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/gl/utils/ObjectModelTransform.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="62" selection-start-line="19" selection-start-column="54" selection-end-line="19" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-23/java/lang/Object.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33203125">
+          <caret line="203" column="19" selection-start-line="203" selection-start-column="19" selection-end-line="203" selection-end-column="19" />
+          <folding>
+            <element signature="e#8516#8517#0" expanded="true" />
+            <element signature="e#8548#8549#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/gl/view/model/NodeViewProjection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.851851">
+          <caret line="32" column="37" selection-start-line="32" selection-start-column="37" selection-end-line="32" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/gl/model/GeneralOpenGLDrawing.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.4074073">
+          <caret line="7" column="16" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/gl/model/GLRendererMap_test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-18.88889">
+          <caret line="118" column="49" selection-start-line="112" selection-start-column="31" selection-end-line="118" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/gl/view/overlay/SceneOverlay.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#883#884#0" expanded="true" />
+            <element signature="e#945#946#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/gl/view/model/WallViewModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -2874,22 +2947,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/gl/utils/ObjectModelTransform.java">
+    <entry file="file://$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/gl/view/overlay/FloorWallsOverlay.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="62" selection-start-line="19" selection-start-column="54" selection-end-line="19" selection-end-column="62" />
+          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/gl/view/model/function/WallLinearFunction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3708381">
-          <caret line="21" column="9" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="264" column="35" selection-start-line="264" selection-start-column="35" selection-end-line="264" selection-end-column="35" />
           <folding>
             <element signature="method#getDrawOrder#0;class#WallLinearFunction#0" expanded="false" />
             <element signature="method#getColor#0;class#WallLinearFunction#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/openglmap/src/main/java/com/example/pavel/openglmap/gl/GLRendererMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7285714">
+          <caret line="50" column="30" selection-start-line="50" selection-start-column="30" selection-end-line="50" selection-end-column="30" />
+          <folding />
         </state>
       </provider>
     </entry>
