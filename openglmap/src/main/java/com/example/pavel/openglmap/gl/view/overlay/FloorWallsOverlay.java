@@ -35,6 +35,18 @@ public class FloorWallsOverlay extends BaseOverlay {
             }
 //            break;
         }
+        WallViewModel wallViewModelPrevius = wallViewModels.get(wallViewModels.size() - 1);
+
+        for (WallViewModel wallViewModel : wallViewModels) {
+
+            if (wallViewModelPrevius != null && wallViewModel.getStartPoint().equals(wallViewModelPrevius.getEndPoint())) {
+                if (wallViewModel.getWallFunction() instanceof WallLinearFunction && wallViewModelPrevius.getWallFunction() instanceof WallLinearFunction) {
+                    wallViewModel.getWallFunction().findPointIntersection(wallViewModel.getWallFunction(), wallViewModelPrevius.getWallFunction());
+                }
+            }
+            wallViewModelPrevius = wallViewModel;
+        }
+
         for (WallViewModel wallViewModel : wallViewModels) {
 
             float[] nodes;

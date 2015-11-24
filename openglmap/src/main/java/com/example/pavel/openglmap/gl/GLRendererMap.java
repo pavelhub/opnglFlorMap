@@ -46,7 +46,7 @@ public class GLRendererMap implements GLSurfaceView.Renderer {
         // Position the eye in front of the origin.
         final float eyeX = 0.0f;
         final float eyeY = -2.0f;
-        final float eyeZ = 1.0f;
+        final float eyeZ = 2.0f;
 
         // We are looking toward the distance
         final float lookX = 0.0f;
@@ -109,7 +109,7 @@ public class GLRendererMap implements GLSurfaceView.Renderer {
 //            Matrix.setLookAtM(mViewMatrix, 0, 0, 0, -0.5f, 0f, 0f, -2.0f, 0f, 1.0f, 0.0f);
         } else {
 
-            Matrix.setLookAtM(mViewMatrix, 0, 0, 0, 6, 0f, 0f, 0f, 0f, 1.0f, 0.0f);
+            Matrix.setLookAtM(mViewMatrix, 0, 0, 0, 3, 0f, 0f, 0f, 0f, 1.0f, 0.0f);
         }
         // Calculate the projection and view transformation
 //        Matrix.multiplyMM(mMVPMatrix, 0, mProjectionMatrix, 0, mViewMatrix, 0);

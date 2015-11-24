@@ -91,7 +91,155 @@
           ],
           depth: 400
         }
-        
+      ]
+    },
+    {
+      "floor_id": 2,
+      "venue_id": 179,
+      "width": 500,
+      "height": 800,
+      "walls_color": "#AAAAAA",
+      "walls": [
+        {
+          "type": "linear",
+          "points": [
+            {
+              "x": 0,
+              "y": 200
+            },
+            {
+              "x": 0,
+              "y": 800
+            }
+          ],
+          depth: 40
+        },
+        {
+          "type": "linear",
+          "points": [
+            {
+              "x": 0,
+              "y": 800
+            },
+            {
+              "x": 100,
+              "y": 800
+            }
+          ],
+          depth: 40
+        },
+        {
+          "type": "linear",
+          "points": [
+            {
+              "x": 100,
+              "y": 800
+            },
+            {
+              "x": 100,
+              "y": 600
+            }
+          ],
+          depth: 40
+        },
+        {
+          "type": "linear",
+          "points": [
+            {
+              "x": 100,
+              "y": 600
+            },
+            {
+              "x": 500,
+              "y": 600
+            }
+          ],
+          depth: 40
+        },
+        {
+          "type": "linear",
+          "points": [
+            {
+              "x": 500,
+              "y": 600
+            },
+            {
+              "x": 100,
+              "y": 300
+            }
+          ],
+          depth: 40
+        },
+        {
+          "type": "linear",
+          "points": [
+            {
+              "x": 100,
+              "y": 300
+            },
+            {
+              "x": 200,
+              "y": 100
+            }
+          ],
+          depth: 40
+        },
+        {
+          "type": "linear",
+          "points": [
+            {
+              "x": 200,
+              "y": 100
+            },
+            {
+              "x": 50,
+              "y": 100
+            }
+          ],
+          depth: 40
+        },
+        {
+          "type": "linear",
+          "points": [
+            {
+              "x": 50,
+              "y": 100
+            },
+            {
+              "x": 50,
+              "y": 0
+            }
+          ],
+          depth: 40
+        },
+        {
+          "type": "linear",
+          "points": [
+            {
+              "x": 50,
+              "y": 0
+            },
+            {
+              "x": 0,
+              "y": 0
+            }
+          ],
+          depth: 40
+        },
+        {
+          "type": "linear",
+          "points": [
+            {
+              "x": 0,
+              "y": 0
+            },
+            {
+              "x": 0,
+              "y": 200
+            }
+          ],
+          depth: 40
+        }
       ]
     }
   ]

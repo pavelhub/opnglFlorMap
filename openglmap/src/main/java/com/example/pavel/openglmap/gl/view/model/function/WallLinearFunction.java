@@ -42,23 +42,47 @@ public class WallLinearFunction {
         bPerpStart = getB(start, kPerp);
         bPerpEnd = getB(end, kPerp);
         float halfDepth = depth / 2.f;
+        if (k < 0) {
+            bParalelRight = (float) (halfDepth * Math.sqrt(k * k + 1) + b);
+            bParalelLeft = (float) (-halfDepth * Math.sqrt(k * k + 1) + b);
+        } else if (k > 0) {
+            bParalelRight = (float) (-halfDepth * Math.sqrt(k * k + 1) + b);
+            bParalelLeft = (float) (halfDepth * Math.sqrt(k * k + 1) + b);
+        } else {
+            if (start.getX() == end.getX()) {
+                if (start.getY() > end.getY()) {
+                    bParalelLeft = b + halfDepth;
+                    bParalelRight = b - halfDepth;
+                } else {
+                    bParalelLeft = b - halfDepth;
+                    bParalelRight = b + halfDepth;
 
-        bParalelRight = (float) (halfDepth * Math.sqrt(k * k + 1) + b);
-        bParalelLeft = (float) (-halfDepth * Math.sqrt(k * k + 1) + b);
+                }
+            } else {
+                if (b < 0) {
+                    bParalelLeft = b + halfDepth;
+                    bParalelRight = b - halfDepth;
+                } else {
+                    bParalelLeft = b - halfDepth;
+                    bParalelRight = b + halfDepth;
+
+                }
+            }
+        }
 //        if(k<0) {
 //            bParalelRight = (float) (-halfDepth * Math.sqrt(k * k + 1) + b);
 //            bParalelLeft = (float) (halfDepth * Math.sqrt(k * k + 1) + b);
 //        }
-        if (k == 0) {
-            if (b < 0) {
-                bParalelLeft = b + halfDepth;
-                bParalelRight = b - halfDepth;
-            } else {
-                bParalelLeft = b - halfDepth;
-                bParalelRight = b + halfDepth;
-
-            }
-        }
+//        if (k == 0) {
+//            if (b < 0) {
+//                bParalelLeft = b + halfDepth;
+//                bParalelRight = b - halfDepth;
+//            } else {
+//                bParalelLeft = b - halfDepth;
+//                bParalelRight = b + halfDepth;
+//
+//            }
+//        }
         totalDistance = (float) getDistanceToSegment(start, end);
 
         this.start = new NodeViewModel(start);
@@ -73,6 +97,124 @@ public class WallLinearFunction {
         start.setRight(getPointParalePerp(start, kParale, bParalelRight, kPerp, bPerpStart));
         end.setLeft(getPointParalePerp(end, kParale, bParalelLeft, kPerp, bPerpEnd));
         end.setRight(getPointParalePerp(end, kParale, bParalelRight, kPerp, bPerpEnd));
+    }
+
+    public void findPointIntersection(WallLinearFunction wallLinearFunctionStart, WallLinearFunction wallLinearFunctionEnd) {
+        NodeViewProjection rightStart = wallLinearFunctionStart.getStart().getRight();
+        NodeViewProjection leftStart = wallLinearFunctionStart.getStart().getLeft();
+        NodeViewProjection rightEnd = wallLinearFunctionEnd.getEnd().getRight();
+        NodeViewProjection leftEnd = wallLinearFunctionEnd.getEnd().getLeft();
+        if (rightStart.equals(rightEnd))
+            return;
+//        if (start.getX() == end.getX()) {
+//            nodeProjection.setY(point.getY());
+//            nodeProjection.setX(bParalel);
+//        } else if (start.getY() == end.getY()) {
+//            nodeProjection.setX(point.getX());
+//            nodeProjection.setY(bParalel);
+//        }
+        float a1 = 0, b1 = 0, c1 = 0;
+
+        if (wallLinearFunctionStart.getStart().getX() == wallLinearFunctionStart.getEnd().getX()) {
+            b1 = 0;
+            a1 = 1;
+            c1 = -wallLinearFunctionStart.getStart().getRight().getX();
+        } else if (wallLinearFunctionStart.getStart().getY() == wallLinearFunctionStart.getEnd().getY()) {
+            b1 = 1;
+            a1 = 0;
+            c1 = -wallLinearFunctionStart.getStart().getRight().getY();
+        } else {
+            b1 = -1;
+            a1 = wallLinearFunctionStart.kParale;
+            c1 = -(a1 * wallLinearFunctionStart.getStart().getRight().getX() + b1 * wallLinearFunctionStart.getStart().getRight().getY());
+        }
+
+        float a2 = 0, b2 = 0, c2 = 0;
+        if (wallLinearFunctionEnd.getStart().getX() == wallLinearFunctionEnd.getEnd().getX()) {
+            b2 = 0;
+            a2 = 1;
+            c2 = -wallLinearFunctionEnd.getEnd().getRight().getX();
+        } else if (wallLinearFunctionEnd.getStart().getY() == wallLinearFunctionEnd.getEnd().getY()) {
+            b2 = 1;
+            a2 = 0;
+            c2 = -wallLinearFunctionEnd.getEnd().getRight().getY();
+        } else {
+            b2 = -1;
+            a2 = wallLinearFunctionEnd.kParale;
+            c2 = -(a2 * wallLinearFunctionEnd.getEnd().getRight().getX() + b2 * wallLinearFunctionEnd.getEnd().getRight().getY());
+        }
+
+        NodeViewProjection nodeViewIntersectionRight = new NodeViewProjection();
+        float rightXIntersection = -(c1 * b2 - c2 * b1) / (a1 * b2 - a2 * b1);
+        float rightYIntersection = -(a1 * c2 - a2 * c1) / (a1 * b2 - a2 * b1);
+        nodeViewIntersectionRight.setX(rightXIntersection);
+        nodeViewIntersectionRight.setY(rightYIntersection);
+        wallLinearFunctionStart.getStart().setRight(nodeViewIntersectionRight);
+        wallLinearFunctionEnd.getEnd().setRight(nodeViewIntersectionRight);
+
+
+        if (wallLinearFunctionStart.getStart().getX() == wallLinearFunctionStart.getEnd().getX()) {
+            b1 = 0;
+            a1 = 1;
+            c1 = -wallLinearFunctionStart.getStart().getLeft().getX();
+        } else if (wallLinearFunctionStart.getStart().getY() == wallLinearFunctionStart.getEnd().getY()) {
+            b1 = 1;
+            a1 = 0;
+            c1 = -wallLinearFunctionStart.getStart().getLeft().getY();
+        } else {
+            b1 = -1;
+            a1 = wallLinearFunctionStart.kParale;
+            c1 = -(a1 * wallLinearFunctionStart.getStart().getLeft().getX() + b1 * wallLinearFunctionStart.getStart().getLeft().getY());
+        }
+
+
+        if (wallLinearFunctionEnd.getStart().getX() == wallLinearFunctionEnd.getEnd().getX()) {
+            b2 = 0;
+            a2 = 1;
+            c2 = -wallLinearFunctionEnd.getEnd().getLeft().getX();
+        } else if (wallLinearFunctionEnd.getStart().getY() == wallLinearFunctionEnd.getEnd().getY()) {
+            b2 = 1;
+            a2 = 0;
+            c2 = -wallLinearFunctionEnd.getEnd().getLeft().getY();
+        } else {
+            b2 = -1;
+            a2 = wallLinearFunctionEnd.kParale;
+            c2 = -(a2 * wallLinearFunctionEnd.getEnd().getLeft().getX() + b2 * wallLinearFunctionEnd.getEnd().getLeft().getY());
+        }
+
+        NodeViewProjection nodeViewIntersectionLeft = new NodeViewProjection();
+        float leftXIntersection = -(c1 * b2 - c2 * b1) / (a1 * b2 - a2 * b1);
+        float leftYIntersection = -(a1 * c2 - a2 * c1) / (a1 * b2 - a2 * b1);
+        nodeViewIntersectionLeft.setX(leftXIntersection);
+        nodeViewIntersectionLeft.setY(leftYIntersection);
+        wallLinearFunctionStart.getStart().setLeft(nodeViewIntersectionLeft);
+        wallLinearFunctionEnd.getEnd().setLeft(nodeViewIntersectionLeft);
+
+///kx+b=y
+//        if (wallLinearFunctionStart.kParale == wallLinearFunctionEnd.kParale && wallLinearFunctionEnd.kParale != 0) {
+//            nodeViewIntersectionRight = new NodeViewProjection();
+//            rightXIntersection = getXIntersections(wallLinearFunctionStart.kParale, wallLinearFunctionStart.bParalelRight, wallLinearFunctionEnd.kParale, wallLinearFunctionEnd.bParalelRight);
+//            rightYIntersection = getY(rightXIntersection, wallLinearFunctionStart.kParale, wallLinearFunctionStart.bParalelRight);
+//            nodeViewIntersectionRight.setX(rightXIntersection);
+//            nodeViewIntersectionRight.setY(rightYIntersection);
+//            wallLinearFunctionStart.getStart().setRight(nodeViewIntersectionRight);
+//            wallLinearFunctionEnd.getEnd().setRight(nodeViewIntersectionRight);
+//        }
+//        NodeViewProjection nodeViewIntersectionLeft = new NodeViewProjection();
+//        float leftXIntersection = getXIntersections(wallLinearFunctionStart.kParale, wallLinearFunctionStart.bParalelLeft, wallLinearFunctionEnd.kParale, wallLinearFunctionEnd.bParalelLeft);
+//        float leftYIntersection = getY(leftXIntersection, wallLinearFunctionStart.kParale, wallLinearFunctionStart.bParalelLeft);
+//        nodeViewIntersectionLeft.setX(leftXIntersection);
+//        nodeViewIntersectionLeft.setY(leftYIntersection);
+//        wallLinearFunctionStart.getStart().setLeft(nodeViewIntersectionLeft);
+//        wallLinearFunctionEnd.getEnd().setRight(nodeViewIntersectionLeft);
+
+    }
+
+    private float getXIntersections(float k1, float b1, float k2, float b2) {
+        float deltaK = k1 - k2;
+        if (deltaK == 0.0f)
+            deltaK = 1.0f;
+        return (b2 - b1) / deltaK;
     }
 
     public float[] getCoordinatesModel(boolean is3d) {
@@ -120,7 +262,8 @@ public class WallLinearFunction {
             arrayPosition += pointMas.length;
 
             //down
-            z = -1;
+            float heightOfFloor = -0.2f;
+            z = heightOfFloor;
             pointMas = rightStart.getPointMas(z);
             System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
             arrayPosition += pointMas.length;
@@ -146,7 +289,7 @@ public class WallLinearFunction {
             arrayPosition += pointMas.length;
 
             //front
-            z = -1;
+            z = heightOfFloor;
             pointMas = leftEnd.getPointMas(z);
             System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
             arrayPosition += pointMas.length;
@@ -169,18 +312,18 @@ public class WallLinearFunction {
             System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
             arrayPosition += pointMas.length;
 
-            z=-1;
+            z = heightOfFloor;
             pointMas = leftEnd.getPointMas(z);
             System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
             arrayPosition += pointMas.length;
 
             //back
-            z = -1;
+            z = heightOfFloor;
             pointMas = rightStart.getPointMas(z);
             System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
             arrayPosition += pointMas.length;
 //1
-            pointMas =rightEnd.getPointMas(z);
+            pointMas = rightEnd.getPointMas(z);
             System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
             arrayPosition += pointMas.length;
 
@@ -197,13 +340,13 @@ public class WallLinearFunction {
             System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
             arrayPosition += pointMas.length;
 
-            z=-1;
+            z = heightOfFloor;
             pointMas = rightStart.getPointMas(z);
             System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
             arrayPosition += pointMas.length;
 
             //left_side
-            z = -1;
+            z = heightOfFloor;
             pointMas = leftStart.getPointMas(z);
             System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
             arrayPosition += pointMas.length;
@@ -225,13 +368,13 @@ public class WallLinearFunction {
             System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
             arrayPosition += pointMas.length;
 
-            z=-1;
+            z = heightOfFloor;
             pointMas = leftStart.getPointMas(z);
             System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
             arrayPosition += pointMas.length;
 
             //right_side
-            z = -1;
+            z = heightOfFloor;
             pointMas = rightEnd.getPointMas(z);
             System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
             arrayPosition += pointMas.length;
@@ -254,7 +397,7 @@ public class WallLinearFunction {
             System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
             arrayPosition += pointMas.length;
 
-            z=-1;
+            z = heightOfFloor;
             pointMas = rightEnd.getPointMas(z);
             System.arraycopy(pointMas, 0, coordinates, arrayPosition, pointMas.length);
             arrayPosition += pointMas.length;
@@ -351,8 +494,6 @@ public class WallLinearFunction {
                             0.0f, 1.0f, 0.0f, 1.0f,
 
 
-
-
                     };
 //        }
 //            return new float[]{
@@ -399,7 +540,7 @@ public class WallLinearFunction {
             nodeProjection.setY(bParalel);
         } else {
             nodeProjection.setX(getPerpX(kParale, kPerp, bParalel, bPerp));
-            nodeProjection.setY(getPerpY(nodeProjection.getX(), kPerp, bPerp));
+            nodeProjection.setY(getY(nodeProjection.getX(), kPerp, bPerp));
         }
 
         return nodeProjection;
@@ -443,7 +584,15 @@ public class WallLinearFunction {
         return (bPerp - bParalel) / deltaK;
     }
 
-    private float getPerpY(float x, float kPerp, float bPerp) {
+    public NodeViewModel getStart() {
+        return start;
+    }
+
+    public NodeViewModel getEnd() {
+        return end;
+    }
+
+    private float getY(float x, float kPerp, float bPerp) {
         return kPerp * x + bPerp;
     }
 

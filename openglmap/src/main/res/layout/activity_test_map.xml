@@ -15,6 +15,12 @@
         android:layout_height="wrap_content">
 
         <Button
+            android:id="@+id/buttonChooseFloor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select floor" />
+
+        <Button
             android:id="@+id/ButtonLoadMap"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

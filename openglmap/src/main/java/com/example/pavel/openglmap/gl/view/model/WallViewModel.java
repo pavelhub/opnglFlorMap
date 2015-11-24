@@ -9,6 +9,25 @@ public class WallViewModel {
     //    NodeViewModel nodeViewModelStart;
 //    NodeViewModel nodeViewModelEnd;
     WallLinearFunction wallFunction;
+    String type;
+
+    public WallLinearFunction getWallFunction() {
+        return wallFunction;
+    }
+
+    public void setWallFunction(WallLinearFunction wallFunction) {
+        this.wallFunction = wallFunction;
+    }
+
+    public NodeViewModel getStartPoint() {
+        return wallFunction.getStart();
+
+    }
+
+    public NodeViewModel getEndPoint() {
+        return wallFunction.getEnd();
+
+    }
 
     private WallViewModel() {
 
@@ -24,6 +43,7 @@ public class WallViewModel {
         return wallFunction.getDrawOrder(false);
 
     }
+
     public float[] getWallNodes3D() {
 
         return wallFunction.getCoordinatesModel(true);
@@ -33,10 +53,12 @@ public class WallViewModel {
 
         return wallFunction.getDrawOrder(true);
     }
+
     public float[] getWallColor2D() {
 
         return wallFunction.getColor(false);
     }
+
     public float[] getWallColor3D() {
 
         return wallFunction.getColor(true);
